@@ -111,3 +111,13 @@ h3 {
 .slidev-page .grid.grid-cols-2 > .slidev-layout {
   padding: 3rem;
 }
+
+/* Remove visible line between image and black background */
+.slidev-page:has(.bg-black) .grid.grid-cols-2 {
+  background: #000;
+}
+
+/* Same for white backgrounds */
+.slidev-page:has(.bg-white) .grid.grid-cols-2 {
+  background: #fff;
+}
