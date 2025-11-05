@@ -1,0 +1,113 @@
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;700&family=Roboto+Mono:wght@400;500&display=swap");
+
+:root {
+  /* DevelopmentSeed Brand Colors */
+  --slidev-theme-primary: #cf3f02;
+  --slidev-theme-secondary: #e2c044;
+  --slidev-theme-danger: #a71d31;
+  --slidev-theme-warning: #e2c044;
+  --slidev-theme-success: #4da167;
+  --slidev-theme-info: #2e86ab;
+  --slidev-theme-muted: #565b65;
+
+  /* Typography - Roboto font family */
+  --slidev-font-family: "Roboto", sans-serif;
+  --slidev-font-family-heading: "Roboto Condensed", sans-serif;
+  --slidev-font-family-mono: "Roboto Mono", monospace;
+}
+
+/* Apply DevelopmentSeed typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--slidev-font-family-heading);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2.25rem;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.75rem;
+  line-height: 1.4;
+}
+
+/* DevelopmentSeed brand color utility classes */
+.text-muted {
+  color: var(--slidev-theme-muted);
+}
+
+.bg-primary {
+  background-color: var(--slidev-theme-primary);
+  color: white;
+}
+.bg-secondary {
+  background-color: var(--slidev-theme-secondary);
+  color: black;
+}
+.bg-danger {
+  background-color: var(--slidev-theme-danger);
+  color: white;
+}
+.bg-warning {
+  background-color: var(--slidev-theme-warning);
+  color: black;
+}
+.bg-success {
+  background-color: var(--slidev-theme-success);
+  color: white;
+}
+.bg-info {
+  background-color: var(--slidev-theme-info);
+  color: white;
+}
+
+/* Ensure content appears above decorative rectangles */
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4,
+.slidev-layout h5,
+.slidev-layout h6,
+.slidev-layout p,
+.slidev-layout ul,
+.slidev-layout ol,
+.slidev-layout pre,
+.slidev-layout blockquote {
+  position: relative;
+  z-index: 10;
+}
+
+/* Add padding to default layout */
+.slidev-layout.default {
+  padding: 4rem;
+}
+
+/* Layout ratio utilities for image-left and image-right layouts */
+/* Makes content area 2/3 width, image 1/3 width */
+
+/* Target the parent grid when image-narrow class is on a child - only for image layouts */
+.slidev-page .grid.grid-cols-2:has(.image-narrow) {
+  grid-template-columns: 1fr 2fr !important;
+}
+
+/* For image-right layout, the content comes first, so reverse the ratio */
+.slidev-page .grid.grid-cols-2:has(.image-narrow):has(> :last-child[style*="background-image"]) {
+  grid-template-columns: 2fr 1fr !important;
+}
+
+/* Add padding to content area in image-left and image-right layouts */
+.slidev-page .grid.grid-cols-2 > .slidev-layout {
+  padding: 3rem;
+}
