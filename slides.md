@@ -1,8 +1,8 @@
 ---
-title: DevelopmentSeed Theme Demo
+title: DevelopmentSeed Slidev Theme
 info: |
   ## DevelopmentSeed Slidev Theme
-  A custom theme showcasing DevelopmentSeed's brand colors and layouts.
+  A demonstration of layouts, components, and Slidev capabilities.
 class: text-center
 highlighter: shiki
 drawings:
@@ -18,15 +18,13 @@ image: /images/theme/lena-delta.jpg
 
 <LogoHorPos position="top-left" height="24px" />
 
-# A [Slidev](https://sli.dev/) deck for DevelopmentSeed
+# DevelopmentSeed Slidev Theme
 
 
 ::subtitle::
-This is the `title` layout
-
+A showcase of layouts, components, and features
 
 <DecorativeRectangle
-  v-if="!noRectangle"
   width="50%"
   height="40%"
   zIndex=20
@@ -35,225 +33,511 @@ This is the `title` layout
     right: '2%',
   }"
   :customStyle="{ mixBlendMode: 'multiply' }"
-/>
+>
+  <!-- You can place content _inside_ of rectangles! -->
+  <div w-full h-full relative flex flex-col items-end justify-end p-4 text-white text-right>
+    <h3 text-5xl>
+      Your Event
+    </h3>
+    <h4 text-md font-mono>
+      2025-01-15
+    </h4>
+    <h5 text-sm>
+      <code text-primary>@presenter</code>
+    </h5>
+  </div>
+</DecorativeRectangle>
 
----
-layout: image-left
-class: image-narrow
-image: /images/theme/iceberg-scoresby-sund.jpg
----
-
-<LogoHorNegMono position="bottom-left" height="24px" />
-
-# Brand Colors
-
-The DevelopmentSeed theme includes our complete color palette:
-
-<div class="grid grid-cols-2 gap-4 mt-8">
-  <div class="bg-primary p-4 rounded text-center">
-    <strong>Primary</strong>
-    <br/>
-    #CF3F02
-  </div>
-  <div class="bg-secondary p-4 rounded text-center">
-    <strong>Secondary</strong><br/>#E2C044
-  </div>
-  <div class="bg-success p-4 rounded text-center text-white">
-    <strong>Success</strong><br/>#4DA167
-  </div>
-  <div class="bg-info p-4 rounded text-center text-white">
-    <strong>Info</strong><br/>#2E86AB
-  </div>
-  <div class="bg-warning p-4 rounded text-center">
-    <strong>Warning</strong><br/>#E2C044
-  </div>
-  <div class="bg-danger p-4 rounded text-center text-white">
-    <strong>Danger</strong><br/>#A71D31
-  </div>
-</div>
+<LogoHorNegMono position="bottom-center" />
 
 ---
 layout: image-right
-class: image-narrow
-image: /images/theme/lena-delta.jpg
+class: bg-black text-white m-10
+image: /images/theme/usgs-08hjz7VzB84-unsplash.png
 ---
 
-# Text-Image Layout
+# Theme Features
 
-This layout follows DevelopmentSeed's common pattern:
+* Custom brand colors
+* Roboto typography
+* Flexible layouts
+* Decorative components
 
-- **Left side**: Content and messaging
-- **Right side**: Rich, impactful imagery
+> Minimal theme, maximum impact
 
-However, on this slide we also set `reverse: true` to place the image on the right.
+<DecorativeRectangle
+  width="35%"
+  height="50%"
+  zIndex=10
+  :position="{
+    bottom: '10%',
+    right: '5%',
+  }"
+  :customStyle="{ mixBlendMode: 'saturation' }"
+/>
 
-<LogoHorNegMono position="bottom-right" height="24px" />
+<DecorativeRectangle
+  width="35%"
+  height="50%"
+  zIndex=10
+  :position="{
+    top: '15%',
+    right: '15%',
+  }"
+  :customStyle="{ mixBlendMode: 'color-burn' }"
+/>
+
+<LogoHorNegMono position="bottom-right" />
+
+<!-- Also supports notes that are displayed in the presenter view. Just make sure that the comment is places at the END of the slide (after logo/rectangles) -->
 
 
 ---
 layout: image-left
+image: https://images.unsplash.com/photo-1722080768196-8983bbbb5c0f
+---
+
+# Click Animations
+
+<v-click>
+
+### Use `v-click` for progressive disclosure
+</v-click>
+
+<v-click>
+
+* First bullet appears
+* Second bullet appears
+* Third bullet appears
+</v-click>
+
+<v-click>
+
+> Perfect for revealing complex information step-by-step
+</v-click>
+
+<v-click>
+
+[📔 Docs](https://sli.dev/guide/animations)
+</v-click>
+
+
+<DecorativeRectangle
+  width="50%"
+  height="40%"
+  zIndex=10
+  :position="{
+    bottom: '2%',
+    left: '1%',
+  }"
+  :customStyle="{ mixBlendMode: 'difference' }"
+/>
+
+<LogoHorNegMono position="bottom-left" />
+
+---
+layout: image-left
+image: https://images.unsplash.com/photo-1744968776900-311abae36ead
 class: image-narrow
-image: /images/theme/Utah_s_Great_Salt_Lake-1-scaled.jpg
 ---
 
 <DecorativeRectangle
-  width="35%"
+  width="55%"
+  height="2em"
+  zIndex=10
+  :position="{
+    top: '5em',
+    left: '16em',
+  }"
+  :customStyle="{ mixBlendMode: 'multiply' }"
+/>
+
+# V-Mark Features
+
+## Highlight and cross-off text
+
+Use `v-mark` + [Rough Notation](https://roughnotation.com/) to draw attention or indicate rejected options:
+
+- `v-mark.highlight.orange` - <span v-mark.highlight.orange>Highlight text and <code>code</code></span>
+- `v-mark.crossed-off` - <span v-mark.crossed-off>Cross off text</span>
+- `v-mark.strike-through` - <span v-mark.strike-through>Strike through text</span>
+- `v-mark.circle` - <span v-mark.circle>Circle text</span>
+- `v-mark.underline` - <span v-mark.underline>Underline text</span>
+
+[📔 Docs](https://sli.dev/features/rough-marker.html)
+
+<LogoHorNegMono position="bottom-left" />
+
+---
+layout: image-right
+image: https://images.unsplash.com/photo-1722083854982-2f1516cf263c
+---
+
+# Lists & Styling
+
+<div mt-5 />
+
+- Styled unordered lists
+  - Proper spacing
+    - Nested list support
+- Orange bullet points
+
+1. We count
+2. And keep counting...
+   1. And count separately
+   2. And more!
+      1. It doesn't stop!
+3. Until we're finished.
+
+
+<DecorativeRectangle
+  width="55%"
+  height="2em"
+  zIndex=10
+  :position="{
+    top: '3em',
+    left: '2em',
+  }"
+  :customStyle="{ mixBlendMode: 'multiply' }"
+/>
+
+<LogoHorNegMono position="bottom-right" />
+
+---
+layout: image-left
+image: https://images.unsplash.com/photo-1722082839868-d900d1a07e69
+class: image-narrow
+---
+
+# Layouts
+
+We use `image-left` and `image-right` layouts for the majority of these slides, with optional `image-narrow` class for 1/3 width images.
+
+Beyond that, consider the `cover` and `title` layouts along with all the other layouts described in the docs.
+
+[📔 Docs](https://sli.dev/guide/layout)
+
+
+<DecorativeRectangle
+  width="40%"
+  height="30%"
+  zIndex=10
+  :position="{
+    bottom: '1%',
+    left: '-5%',
+  }"
+  :customStyle="{ mixBlendMode: 'difference' }"
+/>
+
+<LogoHorNegMono position="bottom-left" />
+
+
+
+---
+layout: iframe-right
+url: https://developmentseed.org/
+---
+
+# Iframe Layout
+
+<div mt-5 />
+
+### Embed External Content
+
+<div mt-5 />
+
+The `iframe-right` layout lets you display external websites alongside your content.
+
+Perfect for:
+- Documentation references
+- Live demos
+- Interactive examples
+
+**Note:**
+
+* Seems to open website in a mobile-layout
+* Doesn't work with github.com! 😿
+
+<DecorativeRectangle
+  width="30%"
+  height="20%"
+  zIndex=10
+  :position="{
+    top: '-5%',
+    left: '19%',
+  }"
+  :customStyle="{ mixBlendMode: 'multiply' }"
+/>
+
+<LogoHorNegMono position="bottom-right" />
+
+---
+layout: image-left
+class: image-narrow
+image: https://images.unsplash.com/photo-1722080767795-af488166033d
+---
+
+
+# Decorative Rectangles
+
+
+<div mb-5 />
+
+## Slide feeling boring? 
+
+<div mb-5 />
+
+**💥SLAP A RECTANGLE ON IT!🟧✨**
+
+<div mb-5 />
+
+```vue
+<DecorativeRectangle
+  width="15em"
+  height="15em"
+  zIndex=10
+  :position="{
+    top: '4em',
+    left: '7em',
+  }"
+  :customStyle="{ mixBlendMode: 'multiply' }"
+/>
+```
+
+Play around with the [`mix-blend-mode`](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode#syntax)
+
+<DecorativeRectangle
+  width="15em"
+  height="15em"
+  zIndex=10
+  :position="{
+    top: '8em',
+    left: '7em',
+  }"
+  :customStyle="{ mixBlendMode: 'multiply' }"
+/>
+
+<DecorativeRectangle
+  width="15em"
+  height="15em"
+  zIndex=10
+  :position="{
+    bottom: '1em',
+    left: '-3.5em',
+  }"
+  :customStyle="{ mixBlendMode: 'difference' }"
+/>
+
+<LogoHorNegMono position="bottom-left" />
+---
+layout: image-left
+image: /images/theme/lena-delta.jpg
+class: image-narrow
+---
+
+# Magic Move
+
+Animate code transitions smoothly
+
+````md magic-move
+```json
+{
+  "id": "product-123",
+  "name": "Widget",
+  "price": 29.99
+}
+```
+```json
+{
+  "id": "product-123",
+  "name": "Premium Widget",
+  "price": 39.99,
+  "category": "electronics",
+  "inStock": true
+}
+```
+````
+
+[📔 Docs](https://sli.dev/features/shiki-magic-move)
+
+
+<DecorativeRectangle
+  width="34%"
   height="60%"
   :position="{
-    top: '10px',
-    left: '10px',
+    bottom: '10px',
+    left: '1%',
   }"
   zIndex="1"
   :customStyle="{ mixBlendMode: 'difference' }"
 />
-
-
-<LogoHorNegMono position="top-left" height="24px" />
-
-# Typography
-## This is a Heading 2
-### This is a Heading 3
-#### This is a Heading 4
-
-Headers use **Roboto Condensed** while body text uses **Roboto**.
-
-Body text is set in Roboto for optimal readability. Links are styled with the primary color and have smooth hover transitions.
-
-Code blocks use **Roboto Mono**:
-
-```typescript
-function greet(name: string): string {
-  return `Hello, ${name}!`;
-}
-```
-
-Inline code like `const x = 10;` also uses Roboto Mono.
-
+<LogoHorNegMono position="bottom-left" />
 
 ---
-layout: default
+layout: image-right
+image: /images/theme/iceberg-scoresby-sund.jpg
+class: image-narrow
+---
+
+## Synchronized Animations
+
+Magic-move with v-mark highlighting
+
+````md magic-move
+```json
+```
+```json
+// 1 - Client request
+GET /api/products/search
+```
+```json
+// 2 - Parse parameters
+{
+  "path": "/api/products/search",
+  "query": "laptops"
+}
+```
+```json
+// 3 - Build search query
+{
+  "path": "/api/products/search",
+  "query": "laptops",
+  "filter": "category = electronics AND type = laptop"
+}
+```
+```json
+// 4 - Add to request
+{
+  "path": "/api/products/search?filter=category = electronics",
+  "query": "laptops",
+  "filter": "category = electronics AND type = laptop"
+}
+```
+```json
+// 5 - Execute database query
+SELECT * FROM products WHERE category = 'electronics' AND type = 'laptop'
+```
+````
+
+1. <span v-mark.highlight.orange="{ at: 1, to: 2 }">Client sends request</span>
+2. <span v-mark.highlight.orange="{ at: 2, to: 3 }">Parse query parameters</span>
+3. <span v-mark.highlight.orange="{ at: 3, to: 4 }">Build search filter</span>
+4. <span v-mark.highlight.orange="{ at: 4, to: 5 }">Append to request</span>
+5. <span v-mark.highlight.orange="{ at: 5 }">Execute against database</span>
+
+
+
+<DecorativeRectangle
+  width="40%"
+  height="40%"
+  zIndex=10
+  :position="{
+    top: '5%',
+    right: '-5%',
+  }"
+  :customStyle="{ mixBlendMode: 'difference' }"
+/>
+
+<LogoHorNegMono position="bottom-right" />
+---
+layout: cover
+background: '/images/theme/Tanezrouft_Basin.jpg'
+class: px-5
 ---
 
 <DecorativeRectangle
-  width="30%"
+  width="40%"
   height="90%"
   :position="{
     bottom: '2%',
-    right: '5%',
+    right: '1%',
   }"
+  :customStyle="{ mixBlendMode: 'color-burn' }"
 />
 
-# Code Examples
+# Code Highlighting
 
-The theme supports beautiful code highlighting with **Roboto Mono**:
+## Line-by-Line Focus
 
-```python {all|3|4|5-9|all}
-def calculate_metrics(data):
-    """Calculate key performance metrics."""
-    total = sum(data)
-    average = total / len(data)
-    return {
-        'total': total,
-        'average': average,
-        'count': len(data)
-    }
+```python [filename.py] {all|5|8|9-10|all}
+@dataclasses.dataclass
+class DataProcessor:
+    """Process data with configurable filters"""
 
-result = calculate_metrics([10, 20, 30, 40, 50])
-print(f"Average: {result['average']}")
+    async def __call__(self, context: dict[str, Any]) -> str:
+        """Apply processing based on context parameters"""
+        logger.debug("Processing with context %s", context)
+        filter_type = context.get("filter")
+        if filter_type:
+            return f"filter: {filter_type}"
+        return "default"
+
 ```
 
-```javascript
-const processData = async (items) => {
-  const results = await Promise.all(
-    items.map(item => fetchData(item))
-  );
-  return results.filter(r => r.success);
-};
-```
+<LogoHorNegMono position="bottom-right" />
 
----
-layout: cover
-background: /images/theme/Tanezrouft_Basin.jpg
----
-
-````md magic-move
-```js
-console.log(`Step ${1}`)
-```
-```js
-console.log(`Step ${1 + 1}`)
-```
-```ts
-console.log(`Step ${3}` as string)
-```
-````
 
 ---
 layout: cover
 background: '/images/theme/Tanezrouft_Basin.jpg'
+class: px-10
 ---
 
-#### Demo
+### Monaco Editor
 
-```ts {monaco-run} {autorun:true}
+Interactive code with live execution
+
+<DecorativeRectangle
+  width="30%"
+  height="95%"
+  :position="{
+    top: '2%',
+    right: '1%',
+  }"
+  :customStyle="{ mixBlendMode: 'color-burn' }"
+/>
+
+```ts {monaco-run} {autorun:false}
 /**
- * Fetch Collection IDs for a given tenant
+ * Fetch GitHub repositories for an organization
  */
-async function fetchTenantCollectionIds(tenant?: string) {
-  let endpoint = '/collections'
-  if (tenant) {
-    endpoint = `${tenant}/collections`;
-  }
-  const response = await fetch(`https://test.openveda.cloud/api/stac/${endpoint}`);
+async function fetchRepositories(org: string = 'developmentseed') {
+  const url = `https://api.github.com/orgs/${org}/repos?per_page=5&sort=updated`;
+  console.log(`Fetching ${url}...`)
+  const response = await fetch(url);
   const data = await response.json();
-  return data['collections'].map((c: { 'id': string }) => c.id);
+  console.log(`Found ${data.length} repositories`)
+  if (!data.length) return console.log('No repositories found')
+  for (const repo of data) {
+    console.log(` - ${repo.name} (⭐ ${repo.stargazers_count})`);
+  }
 }
 
-const tenant = 'earth-tenant';
-const tenantCollectionIds = await fetchTenantCollectionIds(tenant);
-for (const id of tenantCollectionIds) {
-  console.log(` - ${id}`);
-}
+await fetchRepositories();
 ```
 
----
-layout: default
----
+<LogoHorNegMono position="top-right" />
 
-# Lists and Content
-
-The theme styles all standard Markdown elements:
-
-**Unordered Lists:**
-- First item
-- Second item
-  - Nested item
-  - Another nested item
-- Third item
-
-**Ordered Lists:**
-1. Step one
-2. Step two
-3. Step three
-
-> Blockquotes are styled with the primary color accent and use a subtle italic font.
+<!-- NOTE: Monaco's interactive code runner does NOT play well with presenter mode. If you are presenting and want to do live code edits, do those edits on the shared screen, not in the presenter's view -->
 
 ---
-layout: default
+layout: title
+image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
 ---
 
-# Ready to Use!
+<h1 text-6xl>Thank you!</h1>
 
-The DevelopmentSeed theme is ready for your presentations.
 
-## Next Steps
 
-1. Add your logo to `/public/logo.png`
-2. Update `slides.md` frontmatter to use `theme: ./theme`
-3. Start creating your presentation
-4. Use the `text-image` layout for your content
+<DecorativeRectangle
+  width="40%"
+  height="90%"
+  zIndex=11
+  :position="{
+    bottom: '2%',
+    right: '-5%',
+  }"
+  :customStyle="{ mixBlendMode: 'multiply' }"
+/>
 
-**Available Layouts:**
-- `default` - Standard content layout
-- `cover` - Title slides with gradient background
-- `text-image` - Text on left, image on right
+<LogoHorNegMono position="bottom-right" z-12 />
