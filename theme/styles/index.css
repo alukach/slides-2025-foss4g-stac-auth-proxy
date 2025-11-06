@@ -17,6 +17,10 @@
   --slidev-font-family-mono: "Roboto Mono", monospace;
 }
 
+p {
+  margin-top: 1em;
+}
+
 a {
   color: var(--slidev-theme-primary);
   text-decoration: underline;
@@ -24,6 +28,18 @@ a {
 
 code {
   color: var(--slidev-theme-primary);
+  background: transparent;
+}
+
+/* Ensure rough notation SVG overlays appear above content */
+svg.rough-notation {
+  z-index: 10 !important;
+}
+
+/* Remove any backgrounds from code in marked spans */
+span[v-mark] code {
+  background: none !important;
+  background-color: transparent !important;
 }
 
 /* Apply DevelopmentSeed typography */
@@ -57,6 +73,7 @@ ul,
 ol {
   line-height: 1.75;
   margin-left: 1.5rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 

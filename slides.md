@@ -535,9 +535,39 @@ image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
   zIndex=11
   :position="{
     bottom: '2%',
-    right: '-5%',
+    right: '0%',
   }"
-  :customStyle="{ mixBlendMode: 'multiply' }"
-/>
+>
+  <div w-full h-full relative flex flex-col items-start justify-between p-6 text-white text-left class="[&_a]:no-underline [&_a]:text-white [&_a:hover]:text-gray-200">
+    <div mb-4 flex flex-col gap-5 items-start justify-start text-sm font-mono class="[&_a]:flex [&_a]:items-center [&_a]:gap-1">
+      <img src="/images/logos/hor--neg-mono@2x.png" height="24px" />
+      <a href="https://developmentseed.org" target="_blank" title="Website">
+        <WebsiteIcon size="20" pr-1 />
+        <span>developmentseed.org</span>
+      </a>
+      <a href="mailto:hello@developmentseed.org" title="Email">
+        <EmailIcon size="20" pr-1 />
+        <span>hello@developmentseed.org</span>
+      </a>
+      <a href="https://github.com/developmentseed" target="_blank" title="GitHub">
+        <GitHubIcon size="20" pr-1 />
+        <span>@developmentseed</span>
+      </a>
+      <a href="https://www.linkedin.com/company/development-seed" target="_blank" title="LinkedIn">
+        <LinkedInIcon size="20" pr-1 />
+        <span>development-seed</span>
+      </a>
+      <!-- <a href="https://developmentseed.org/careers" target="_blank" class="font-sans" text-xs text-strong text-italics>
+        <span pr-1>🚀</span>
+        We're hiring!
+      </a> -->
+    </div>
+    <div opacity-70 w-100 class="text-[10px]">
+      <div>Attributions:</div>
+      <div>
+        Slide images from <a href="https://unsplash.com/@usgs?utm_source=ds-slides&utm_medium=referral" target="_blank" class="text-white hover:text-gray-200">USGS</a> on <a href="https://unsplash.com/?utm_source=ds-slides&utm_medium=referral">Unsplash</a>
+      </div>
+    </div>
+  </div>
+</DecorativeRectangle>
 
-<LogoHorNegMono position="bottom-right" z-12 />
