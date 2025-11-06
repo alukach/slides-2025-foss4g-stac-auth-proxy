@@ -497,7 +497,7 @@ Interactive code with live execution
   :customStyle="{ mixBlendMode: 'color-burn' }"
 />
 
-```ts {monaco-run} {autorun:false}
+```ts {monaco-run} {autorun:true}
 /**
  * Fetch GitHub repositories for an organization
  */
