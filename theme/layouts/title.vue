@@ -3,6 +3,12 @@ const props = defineProps<{
   image?: string;
   subtitle?: string;
 }>();
+
+function resolveAssetUrl(url?: string) {
+  if (!url) return url;
+  if (url.startsWith("/")) return import.meta.env.BASE_URL + url.slice(1);
+  return url;
+}
 </script>
 
 <template>
@@ -34,7 +40,7 @@ const props = defineProps<{
     <div class="title-image h-1/3 relative">
       <img
         v-if="image"
-        :src="image"
+        :src="resolveAssetUrl(image)"
         class="absolute inset-0 w-full h-full object-cover z-10"
         alt=""
       />

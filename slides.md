@@ -540,7 +540,7 @@ image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
 >
   <div w-full h-full relative flex flex-col items-start justify-between p-6 text-white text-left class="[&_a]:no-underline [&_a]:text-white [&_a:hover]:text-gray-200">
     <div mb-4 flex flex-col gap-5 items-start justify-start text-sm font-mono class="[&_a]:flex [&_a]:items-center [&_a]:gap-1">
-      <img src="/images/logos/hor--neg-mono@2x.png" height="24px" />
+      <Logo src="/images/logos/hor--neg-mono@2x.png" height="24px" alt="DevelopmentSeed" class="!relative !top-0 !left-0" />
       <a href="https://developmentseed.org" target="_blank" title="Website">
         <WebsiteIcon size="20" pr-1 />
         <span>developmentseed.org</span>
