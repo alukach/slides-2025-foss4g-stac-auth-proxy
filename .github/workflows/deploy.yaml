@@ -21,18 +21,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
       - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
-
-      - name: Setup @antfu/ni
-        run: npm i -g @antfu/ni
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: nci
+        run: pnpm install
+
+      - name: Cache Slidev build
+        uses: actions/cache@v4
+        with:
+          path: |
+            .slidev
+            node_modules/.cache
+          key: ${{ runner.os }}-slidev-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-slidev-
 
       - name: Build
-        run: nr build --base /${{github.event.repository.name}}/
+        run: pnpm run build --base /${{github.event.repository.name}}/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
