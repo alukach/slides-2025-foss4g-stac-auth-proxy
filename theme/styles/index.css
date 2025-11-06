@@ -4,7 +4,7 @@
 :root {
   /* DevelopmentSeed Brand Colors */
   --slidev-theme-primary: #cf3f02;
-  --slidev-theme-secondary: #e2c044;
+  --slidev-theme-secondary: #e2c044; /* Not sure about this one... */
   --slidev-theme-danger: #a71d31;
   --slidev-theme-warning: #e2c044;
   --slidev-theme-success: #4da167;
@@ -15,6 +15,15 @@
   --slidev-font-family: "Roboto", sans-serif;
   --slidev-font-family-heading: "Roboto Condensed", sans-serif;
   --slidev-font-family-mono: "Roboto Mono", monospace;
+}
+
+a {
+  color: var(--slidev-theme-primary);
+  text-decoration: underline;
+}
+
+code {
+  color: var(--slidev-theme-primary);
 }
 
 /* Apply DevelopmentSeed typography */
@@ -44,7 +53,8 @@ h3 {
 }
 
 /* List styling */
-ul, ol {
+ul,
+ol {
   line-height: 1.75;
   margin-left: 1.5rem;
   margin-bottom: 1rem;
@@ -99,6 +109,26 @@ li > ul,
 li > ol {
   margin-top: 0rem;
   margin-bottom: 0rem;
+}
+
+/* Blockquotes */
+blockquote {
+  font-family: var(--slidev-font-family-heading);
+  font-weight: 900;
+  font-size: 1.25rem;
+  /* font-style: italic; */
+  color: var(--slidev-theme-muted);
+  border-left: 4px solid var(--slidev-theme-primary);
+  padding-left: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-left: 0;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+blockquote p {
+  margin: 0;
 }
 
 /* DevelopmentSeed brand color utility classes */
@@ -161,7 +191,10 @@ li > ol {
 }
 
 /* For image-right layout, the content comes first, so reverse the ratio */
-.slidev-page .grid.grid-cols-2:has(.image-narrow):has(> :last-child[style*="background-image"]) {
+.slidev-page
+  .grid.grid-cols-2:has(.image-narrow):has(
+    > :last-child[style*="background-image"]
+  ) {
   grid-template-columns: 2fr 1fr !important;
 }
 
