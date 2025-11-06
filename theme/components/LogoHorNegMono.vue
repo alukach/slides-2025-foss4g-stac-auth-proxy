@@ -9,7 +9,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   position: 'top-right',
-  height: '60px',
+  height: '24px',
   width: 'auto'
 })
 </script>
