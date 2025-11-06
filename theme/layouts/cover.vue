@@ -1,53 +1,51 @@
 <script setup lang="ts">
-import type { CSSProperties } from 'vue'
+import type { CSSProperties } from "vue";
 
 const props = defineProps({
   background: {
-    default: '',
+    default: "",
   },
   dim: {
     type: Boolean,
     default: false,
   },
-})
+});
 
 function resolveAssetUrl(url: string) {
-  if (url.startsWith('/'))
-    return import.meta.env.BASE_URL + url.slice(1)
-  return url
+  if (url.startsWith("/")) return import.meta.env.BASE_URL + url.slice(1);
+  return url;
 }
 
 function isLightColor(color: string): boolean {
   // Simple hex color check
-  if (color.startsWith('#')) {
-    const hex = color.replace('#', '')
-    const r = parseInt(hex.slice(0, 2), 16)
-    const g = parseInt(hex.slice(2, 4), 16)
-    const b = parseInt(hex.slice(4, 6), 16)
+  if (color.startsWith("#")) {
+    const hex = color.replace("#", "");
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
     // Calculate relative luminance
-    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
-    return luminance > 0.5
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    return luminance > 0.5;
   }
   // For rgb/hsl, assume dark (could be enhanced)
-  return false
+  return false;
 }
 
 function handleBackground(background?: string, dim = false): CSSProperties {
-  const isColor = background && ['#', 'rgb', 'hsl'].some(v => background.indexOf(v) === 0)
+  const isColor =
+    background && ["#", "rgb", "hsl"].some((v) => background.indexOf(v) === 0);
 
-  let textColor: string | undefined
+  let textColor: string | undefined;
   if (background && !isColor) {
     // Image background - use white text
-    textColor = 'white'
+    textColor = "white";
   } else if (background && isColor) {
     // Color background - detect if light or dark
-    textColor = isLightColor(background) ? 'black' : 'white'
+    textColor = isLightColor(background) ? "black" : "white";
   }
 
   const style = {
-    background: isColor
-      ? background
-      : undefined,
+    background: isColor ? background : undefined,
     color: textColor,
     backgroundImage: isColor
       ? undefined
@@ -56,22 +54,25 @@ function handleBackground(background?: string, dim = false): CSSProperties {
           ? `linear-gradient(#0005, #0008), url(${resolveAssetUrl(background)})`
           : `url("${resolveAssetUrl(background)}")`
         : undefined,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-  }
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+  };
 
-  if (!style.background)
-    delete style.background
+  if (!style.background) delete style.background;
 
-  return style
+  return style;
 }
 
-const style = handleBackground(props.background, props.dim)
+const style = handleBackground(props.background, props.dim);
 </script>
 
 <template>
-  <div class="slidev-layout cover h-full w-full flex items-center justify-center p-16" :style="{ ...style, color: undefined }">
+  <div
+    class="slidev-layout cover h-full w-full flex items-center justify-center"
+    :class="$attrs.class"
+    :style="{ ...style, color: undefined }"
+  >
     <div class="my-auto w-full cover-content" :style="{ color: style.color }">
       <slot />
     </div>
