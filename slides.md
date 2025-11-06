@@ -520,14 +520,31 @@ await fetchRepositories();
 
 <!-- NOTE: Monaco's interactive code runner does NOT play well with presenter mode. If you are presenting and want to do live code edits, do those edits on the shared screen, not in the presenter's view -->
 
+
+---
+layout: image-left
+image: https://images.unsplash.com/photo-1744968776986-3deb08e40a24
+class: image-narrow
+---
+
+# Mermaid Diagrams
+
+```mermaid
+pie title How I spent time preparing for my talk
+"Writing slide content" : 3
+"Looking for cool satellite imagery" : 79
+```
+
+[📔 Docs](https://docs.mermaidchart.com/mermaid-oss/intro/index.html)
+
+<LogoHorNegMono position="bottom-left" />
+
 ---
 layout: title
 image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
 ---
 
 <h1 text-6xl>Thank you!</h1>
-
-
 
 <DecorativeRectangle
   width="40%"
