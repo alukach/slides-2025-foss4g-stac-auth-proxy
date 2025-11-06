@@ -537,7 +537,18 @@ pie title How I spent time preparing for my talk
 
 [📔 Docs](https://docs.mermaidchart.com/mermaid-oss/intro/index.html)
 
+<DecorativeRectangle
+  width="35%"
+  height="40%"
+  zIndex=10
+  :position="{
+    bottom: '2%',
+    left: '1%',
+  }"
+  :customStyle="{ mixBlendMode: 'multiply' }"
+/>
 <LogoHorNegMono position="bottom-left" />
+
 
 ---
 layout: title
