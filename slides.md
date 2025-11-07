@@ -1,8 +1,7 @@
 ---
 title: DevelopmentSeed Slidev Theme
 info: |
-  ## DevelopmentSeed Slidev Theme
-  A demonstration of layouts, components, and Slidev capabilities.
+  DevelopmentSeed Slidev Theme - A demonstration of layouts, components, and Slidev capabilities.
 class: text-center
 highlighter: shiki
 drawings:
