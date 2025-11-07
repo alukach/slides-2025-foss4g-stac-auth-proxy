@@ -85,7 +85,6 @@ image: /images/theme/usgs-08hjz7VzB84-unsplash.png
   }"
   :customStyle="{ mixBlendMode: 'color-burn' }"
 />
-
 <LogoHorNegMono position="bottom-right" />
 
 <!-- Also supports notes that are displayed in the presenter view. Just make sure that the comment is places at the END of the slide (after logo/rectangles) -->
@@ -131,7 +130,6 @@ image: https://images.unsplash.com/photo-1722080768196-8983bbbb5c0f
   }"
   :customStyle="{ mixBlendMode: 'difference' }"
 />
-
 <LogoHorNegMono position="bottom-left" />
 
 ---
@@ -197,7 +195,6 @@ image: https://images.unsplash.com/photo-1722083854982-2f1516cf263c
   }"
   :customStyle="{ mixBlendMode: 'multiply' }"
 />
-
 <LogoHorNegMono position="bottom-right" />
 
 ---
@@ -225,7 +222,6 @@ Beyond that, consider the `cover` and `title` layouts along with all the other l
   }"
   :customStyle="{ mixBlendMode: 'difference' }"
 />
-
 <LogoHorNegMono position="bottom-left" />
 
 
@@ -261,7 +257,6 @@ Perfect for:
   }"
   :customStyle="{ mixBlendMode: 'multiply' }"
 />
-
 <LogoHorNegMono position="bottom-right" />
 
 ---
@@ -273,16 +268,9 @@ image: https://images.unsplash.com/photo-1722080767795-af488166033d
 
 # Decorative Rectangles
 
-
-<div mb-5 />
-
 ## Slide feeling boring? 
 
-<div mb-5 />
-
 **💥SLAP A RECTANGLE ON IT!🟧✨**
-
-<div mb-5 />
 
 ```vue
 <DecorativeRectangle
@@ -320,7 +308,6 @@ Play around with the [`mix-blend-mode`](https://developer.mozilla.org/en-US/docs
   }"
   :customStyle="{ mixBlendMode: 'difference' }"
 />
-
 <LogoHorNegMono position="bottom-left" />
 ---
 layout: image-left
@@ -430,7 +417,6 @@ SELECT * FROM products WHERE category = 'electronics' AND type = 'laptop'
   }"
   :customStyle="{ mixBlendMode: 'difference' }"
 />
-
 <LogoHorNegMono position="bottom-right" />
 ---
 layout: cover
@@ -438,19 +424,9 @@ background: '/images/theme/Tanezrouft_Basin.jpg'
 class: px-5
 ---
 
-<DecorativeRectangle
-  width="40%"
-  height="90%"
-  :position="{
-    bottom: '2%',
-    right: '1%',
-  }"
-  :customStyle="{ mixBlendMode: 'color-burn' }"
-/>
-
 # Code Highlighting
 
-## Line-by-Line Focus
+Line-by-Line Focus
 
 ```python [filename.py] {all|5|8|9-10|all}
 @dataclasses.dataclass
@@ -467,6 +443,16 @@ class DataProcessor:
 
 ```
 
+<DecorativeRectangle
+  width="30%"
+  height="95%"
+  :position="{
+    bottom: '2%',
+    right: '1%',
+  }"
+  :customStyle="{ mixBlendMode: 'multiply' }"
+  zIndex=0
+/>
 <LogoHorNegMono position="bottom-right" />
 
 
@@ -479,16 +465,6 @@ class: px-10
 ### Monaco Editor
 
 Interactive code with live execution
-
-<DecorativeRectangle
-  width="30%"
-  height="95%"
-  :position="{
-    top: '2%',
-    right: '1%',
-  }"
-  :customStyle="{ mixBlendMode: 'color-burn' }"
-/>
 
 ```ts {monaco-run} {autorun:true}
 /**
@@ -509,6 +485,16 @@ async function fetchRepositories(org: string = 'developmentseed') {
 await fetchRepositories();
 ```
 
+<DecorativeRectangle
+  width="30%"
+  height="96%"
+  :position="{
+    top: '2%',
+    right: '1%',
+  }"
+  :customStyle="{ mixBlendMode: 'multiply' }"
+  zIndex=0
+/>
 <LogoHorNegMono position="top-right" />
 
 <!-- NOTE: Monaco's interactive code runner does NOT play well with presenter mode. If you are presenting and want to do live code edits, do those edits on the shared screen, not in the presenter's view -->
@@ -592,4 +578,3 @@ image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
     </div>
   </div>
 </DecorativeRectangle>
-

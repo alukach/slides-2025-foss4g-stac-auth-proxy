@@ -229,3 +229,7 @@ blockquote p {
 .slidev-page:has(.bg-white) .grid.grid-cols-2 {
   background: #fff;
 }
+
+.slidev-code-wrapper, .slidev-code-block-title, .slidev-monaco-container {
+  z-index: 1;
+}
