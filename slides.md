@@ -175,8 +175,6 @@ image: https://images.unsplash.com/photo-1722083854982-2f1516cf263c
 
 # Lists & Styling
 
-<div mt-5 />
-
 - Styled unordered lists
   - Proper spacing
     - Nested list support
@@ -240,11 +238,7 @@ url: https://developmentseed.org/
 
 # Iframe Layout
 
-<div mt-5 />
-
 ### Embed External Content
-
-<div mt-5 />
 
 The `iframe-right` layout lets you display external websites alongside your content.
 
