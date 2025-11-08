@@ -53,6 +53,7 @@ layout: image-right
 # Landsat 8 Image of Ayon Island
 # https://unsplash.com/photos/B-bXvd0R1bM
 image: https://images.unsplash.com/photo-1722083855371-0d5a25647ce6
+class: image-narrow
 ---
 
 # Theme Features
@@ -64,34 +65,13 @@ image: https://images.unsplash.com/photo-1722083855371-0d5a25647ce6
 
 > Minimal theme, maximum impact
 
-<DecorativeRectangle
-  width="35%"
-  height="50%"
-  zIndex=10
-  :position="{
-    bottom: '10%',
-    right: '5%',
-  }"
-  :customStyle="{ mixBlendMode: 'saturation' }"
-/>
-
-<DecorativeRectangle
-  width="35%"
-  height="50%"
-  zIndex=10
-  :position="{
-    top: '15%',
-    right: '15%',
-  }"
-  :customStyle="{ mixBlendMode: 'color-burn' }"
-/>
 <LogoHorNegMono position="bottom-right" />
 
 <!-- Also supports notes that are displayed in the presenter view. Just make sure that the comment is places at the END of the slide (after logo/rectangles) -->
 
 
 ---
-layout: image-left
+layout: image-right
 # Landsat 9 Image of Kangerdlugssuaq Glacier, Greenland
 # https://unsplash.com/photos/PgL1p8TBGNQ
 image: https://images.unsplash.com/photo-1722080768196-8983bbbb5c0f
@@ -122,17 +102,6 @@ class: image-narrow
 [📔 Docs](https://sli.dev/guide/animations)
 </v-click>
 
-
-<DecorativeRectangle
-  width="50%"
-  height="40%"
-  zIndex=10
-  :position="{
-    bottom: '2%',
-    left: '1%',
-  }"
-  :customStyle="{ mixBlendMode: 'difference' }"
-/>
 <LogoHorNegMono position="bottom-left" />
 
 ---
@@ -142,17 +111,6 @@ layout: image-left
 image: https://images.unsplash.com/photo-1744968776900-311abae36ead
 class: image-narrow
 ---
-
-<DecorativeRectangle
-  width="55%"
-  height="2em"
-  zIndex=10
-  :position="{
-    top: '5em',
-    left: '16em',
-  }"
-  :customStyle="{ mixBlendMode: 'multiply' }"
-/>
 
 # V-Mark Features
 
@@ -191,16 +149,6 @@ image: https://images.unsplash.com/photo-1579818276659-2943e3cd4b30
       1. It doesn't stop!
 3. Until we're finished.
 
-<DecorativeRectangle
-  width="55%"
-  height="2em"
-  zIndex=10
-  :position="{
-    top: '3em',
-    left: '2em',
-  }"
-  :customStyle="{ mixBlendMode: 'multiply' }"
-/>
 <LogoHorNegMono position="bottom-right" />
 
 ---
@@ -219,20 +167,7 @@ Beyond that, consider the `cover` and `title` layouts along with all the other l
 
 [📔 Docs](https://sli.dev/guide/layout)
 
-
-<DecorativeRectangle
-  width="40%"
-  height="30%"
-  zIndex=10
-  :position="{
-    bottom: '1%',
-    left: '-5%',
-  }"
-  :customStyle="{ mixBlendMode: 'difference' }"
-/>
 <LogoHorNegMono position="bottom-left" />
-
-
 
 ---
 layout: iframe-right
@@ -255,16 +190,6 @@ Perfect for:
 * Seems to open website in a mobile-layout
 * Doesn't work with github.com! 😿
 
-<DecorativeRectangle
-  width="30%"
-  height="20%"
-  zIndex=10
-  :position="{
-    top: '-5%',
-    left: '19%',
-  }"
-  :customStyle="{ mixBlendMode: 'multiply' }"
-/>
 <LogoHorNegMono position="bottom-right" />
 
 ---
@@ -284,7 +209,7 @@ image: https://images.unsplash.com/photo-1722080767795-af488166033d
 ```vue
 <DecorativeRectangle
   width="15em"
-  height="15em"
+  height="10rem"
   zIndex=10
   :position="{
     top: '4em',
@@ -297,25 +222,14 @@ image: https://images.unsplash.com/photo-1722080767795-af488166033d
 Play around with the [`mix-blend-mode`](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode#syntax)
 
 <DecorativeRectangle
-  width="15em"
-  height="15em"
+  width="23em"
+  height="10rem"
   zIndex=10
   :position="{
-    top: '8em',
-    left: '7em',
+    bottom: '2%',
+    left: '-1em',
   }"
   :customStyle="{ mixBlendMode: 'multiply' }"
-/>
-
-<DecorativeRectangle
-  width="15em"
-  height="15em"
-  zIndex=10
-  :position="{
-    bottom: '1em',
-    left: '-3.5em',
-  }"
-  :customStyle="{ mixBlendMode: 'difference' }"
 />
 <LogoHorNegMono position="bottom-left" />
 ---
@@ -350,16 +264,6 @@ Animate code transitions smoothly
 [📔 Docs](https://sli.dev/features/shiki-magic-move)
 
 
-<DecorativeRectangle
-  width="34%"
-  height="60%"
-  :position="{
-    bottom: '10px',
-    left: '1%',
-  }"
-  zIndex="1"
-  :customStyle="{ mixBlendMode: 'difference' }"
-/>
 <LogoHorNegMono position="bottom-left" />
 
 ---
@@ -416,19 +320,8 @@ SELECT * FROM products WHERE category = 'electronics' AND type = 'laptop'
 4. <span v-mark.highlight.orange="{ at: 4, to: 5 }">Append to request</span>
 5. <span v-mark.highlight.orange="{ at: 5 }">Execute against database</span>
 
-
-
-<DecorativeRectangle
-  width="40%"
-  height="40%"
-  zIndex=10
-  :position="{
-    top: '5%',
-    right: '-5%',
-  }"
-  :customStyle="{ mixBlendMode: 'difference' }"
-/>
 <LogoHorNegMono position="bottom-right" />
+
 ---
 layout: cover
 # Copernicus Sentinel-2 image of Tanezrouft Basin, Sahara, southern Algeria and northern Mali
@@ -456,16 +349,6 @@ class DataProcessor:
 
 ```
 
-<DecorativeRectangle
-  width="30%"
-  height="95%"
-  :position="{
-    bottom: '2%',
-    right: '1%',
-  }"
-  :customStyle="{ mixBlendMode: 'multiply' }"
-  zIndex=0
-/>
 <LogoHorNegMono position="bottom-right" />
 
 
@@ -500,20 +383,9 @@ async function fetchRepositories(org: string = 'developmentseed') {
 await fetchRepositories();
 ```
 
-<DecorativeRectangle
-  width="30%"
-  height="96%"
-  :position="{
-    top: '2%',
-    right: '1%',
-  }"
-  :customStyle="{ mixBlendMode: 'multiply' }"
-  zIndex=0
-/>
 <LogoHorNegMono position="top-right" />
 
 <!-- NOTE: Monaco's interactive code runner does NOT play well with presenter mode. If you are presenting and want to do live code edits, do those edits on the shared screen, not in the presenter's view -->
-
 
 ---
 layout: image-left
@@ -533,16 +405,6 @@ pie title How I spent time preparing for my talk
 
 [📔 Docs](https://docs.mermaidchart.com/mermaid-oss/intro/index.html)
 
-<DecorativeRectangle
-  width="35%"
-  height="40%"
-  zIndex=10
-  :position="{
-    bottom: '2%',
-    left: '1%',
-  }"
-  :customStyle="{ mixBlendMode: 'multiply' }"
-/>
 <LogoHorNegMono position="bottom-left" />
 
 ---
@@ -600,7 +462,7 @@ layout: title
 image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
 ---
 
-<h1 text-6xl>Thank you!</h1>
+# Thank you!
 
 <DecorativeRectangle
   width="30%"
