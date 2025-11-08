@@ -367,9 +367,9 @@ Animate code transitions smoothly
 
 ---
 layout: image-right
-# drone image of iceberg at Scoresby Sund, Greenland
-# https://unsplash.com/photos/iceberg-collage-U1mQ3wGcvtQ
-image: https://images.unsplash.com/photo-1536227019771-b2eac2dd6121
+# Sentinel-2A image of the Southern Tibetan Plateau
+# image: https://images.unsplash.com/photo-1536227019771-b2eac2dd6121
+image: https://images.unsplash.com/photo-1744968777300-210d3bb46817
 class: image-narrow
 ---
 
@@ -648,7 +648,7 @@ image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
     <div opacity-70 w-100 class="text-[10px]">
       <div>Attributions:</div>
       <div>
-        Slide images from <a href="https://unsplash.com/@usgs?utm_source=ds-slides&utm_medium=referral" target="_blank" class="text-white hover:text-gray-200">USGS</a> & <a href="https://unsplash.com/@anniespratt?utm_source=ds-slides&utm_medium=referral" target="_blank" class="text-white hover:text-gray-200">Annie Spratt</a> on <a href="https://unsplash.com/?utm_source=ds-slides&utm_medium=referral">Unsplash</a>
+        Slide images from <a href="https://unsplash.com/@usgs?utm_source=ds-slides&utm_medium=referral" target="_blank" class="text-white hover:text-gray-200">USGS</a> on <a href="https://unsplash.com/?utm_source=ds-slides&utm_medium=referral">Unsplash</a>
       </div>
     </div>
   </div>
