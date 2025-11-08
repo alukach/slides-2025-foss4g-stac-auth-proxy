@@ -9,6 +9,8 @@ drawings:
   enable: false
 transition: slide-left
 mdc: true
+addons:
+    - slidev-addon-qrcode
 
 theme: './theme'
 layout: title
@@ -183,7 +185,6 @@ image: https://images.unsplash.com/photo-1722083854982-2f1516cf263c
    2. And more!
       1. It doesn't stop!
 3. Until we're finished.
-
 
 <DecorativeRectangle
   width="55%"
@@ -528,6 +529,52 @@ pie title How I spent time preparing for my talk
 />
 <LogoHorNegMono position="bottom-left" />
 
+---
+layout: image-right
+image: https://images.unsplash.com/photo-1722083854982-2f1516cf263c
+class: image-narrow
+---
+
+# QR Code Component
+
+<div text-xs>
+
+Dynamic QR codes powered by [`slidev-addon-qrcode`](https://github.com/kravetsone/slidev-addon-qrcode)
+
+
+```jsx
+<CurrentUrlQRCode />
+<CurrentUrlQRCode includeSlideNumber/>
+<CurrentUrlQRCode 
+  width="100" height="100" 
+  image='/images/logos/symbol--pos-neg@2x.png'
+  url="https://developmentseed.org"
+  :dotsOptions="{ 
+    type: 'dots', 
+    color: 'var(--slidev-theme-primary)' 
+  }"
+/>
+```
+
+</div>
+
+<div flex gap-4>
+<CurrentUrlQRCode  />
+<CurrentUrlQRCode  includeSlideNumber/>
+<CurrentUrlQRCode  url="https://developmentseed.org" />
+<CurrentUrlQRCode
+  width="100" height="100" 
+  image='/images/logos/symbol--pos-neg@2x.png'
+  url="https://developmentseed.org"
+  :dotsOptions="{ 
+    type: 'dots', 
+    color: 'var(--slidev-theme-primary)' 
+  }"
+/>
+</div>
+
+
+<LogoHorNegMono position="bottom-right" />
 
 ---
 layout: title
@@ -538,11 +585,11 @@ image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
 
 <DecorativeRectangle
   width="30%"
-  height="90%"
+  height="96%"
   zIndex=11
   :position="{
     bottom: '2%',
-    right: '0%',
+    right: '2%',
   }"
   :customStyle="{ mixBlendMode: 'multiply' }"
 >
@@ -569,6 +616,11 @@ image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
         <span pr-1>🚀</span>
         We're hiring!
       </a> -->
+      <CurrentUrlQRCode
+        fullWidth
+        image='/images/logos/symbol--neg-mono@2x.png'
+        :dotsOptions="{ type: 'classy-rounded', color: 'white' }"
+      />
     </div>
     <div opacity-70 w-100 class="text-[10px]">
       <div>Attributions:</div>
