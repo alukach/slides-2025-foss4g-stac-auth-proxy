@@ -1,14 +1,10 @@
 <script setup lang="ts">
+import { resolveAssetUrl } from '../utils/assets'
+
 const props = defineProps<{
   image?: string;
   subtitle?: string;
 }>();
-
-function resolveAssetUrl(url?: string) {
-  if (!url) return url;
-  if (url.startsWith("/")) return import.meta.env.BASE_URL + url.slice(1);
-  return url;
-}
 </script>
 
 <template>

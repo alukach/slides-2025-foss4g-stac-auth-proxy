@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { resolveAssetUrl } from '../utils/assets'
 
 interface Props {
   src?: string
@@ -32,11 +33,6 @@ const sizeStyle = computed(() => ({
   width: typeof props.width === 'number' ? `${props.width}px` : props.width,
   height: typeof props.height === 'number' ? `${props.height}px` : props.height
 }))
-
-function resolveAssetUrl(url: string) {
-  if (url.startsWith("/")) return import.meta.env.BASE_URL + url.slice(1);
-  return url;
-}
 </script>
 
 <template>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { CSSProperties } from "vue";
+import { resolveAssetUrl } from '../utils/assets'
 
 const props = defineProps({
   background: {
@@ -10,11 +11,6 @@ const props = defineProps({
     default: false,
   },
 });
-
-function resolveAssetUrl(url: string) {
-  if (url.startsWith("/")) return import.meta.env.BASE_URL + url.slice(1);
-  return url;
-}
 
 function isLightColor(color: string): boolean {
   // Simple hex color check

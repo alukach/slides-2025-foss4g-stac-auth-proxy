@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
+import { resolveAssetUrl } from '../utils/assets'
 
 interface Props {
   url?: string
@@ -41,6 +42,9 @@ const qrCodeUrl = computed(() => props.url || currentUrl.value)
 // When fullWidth is true, use a large pixel value that will be constrained by CSS
 const computedWidth = computed(() => props.fullWidth ? 400 : props.width)
 const computedHeight = computed(() => props.fullWidth ? 400 : props.height)
+
+// Resolve the image URL to work with Vite's BASE_URL
+const resolvedImage = computed(() => resolveAssetUrl(props.image))
 </script>
 
 <template>
@@ -48,7 +52,7 @@ const computedHeight = computed(() => props.fullWidth ? 400 : props.height)
     <QRCode
       v-if="qrCodeUrl"
       :type="type"
-      :image="image"
+      :image="resolvedImage"
       :width="computedWidth"
       :height="computedHeight"
       :data="qrCodeUrl"
