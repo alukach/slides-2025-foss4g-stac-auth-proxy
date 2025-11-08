@@ -53,8 +53,9 @@ A showcase of layouts, components, and features
 
 ---
 layout: image-right
-class: bg-black text-white m-10
-image: /images/theme/usgs-08hjz7VzB84-unsplash.png
+# Landsat 8 Image of Ayon Island
+# https://unsplash.com/photos/B-bXvd0R1bM
+image: https://images.unsplash.com/photo-1722083855371-0d5a25647ce6
 ---
 
 # Theme Features
@@ -94,7 +95,10 @@ image: /images/theme/usgs-08hjz7VzB84-unsplash.png
 
 ---
 layout: image-left
+# Landsat 9 Image of Kangerdlugssuaq Glacier, Greenland
+# https://unsplash.com/photos/PgL1p8TBGNQ
 image: https://images.unsplash.com/photo-1722080768196-8983bbbb5c0f
+class: image-narrow
 ---
 
 # Click Animations
@@ -136,6 +140,8 @@ image: https://images.unsplash.com/photo-1722080768196-8983bbbb5c0f
 
 ---
 layout: image-left
+# Landsat 8 image of Klyuchevskaya, Kamchatka Peninsula, Siberia, Russia
+# https://unsplash.com/photos/yMcULenXoik
 image: https://images.unsplash.com/photo-1744968776900-311abae36ead
 class: image-narrow
 ---
@@ -169,7 +175,9 @@ Use `v-mark` + [Rough Notation](https://roughnotation.com/) to draw attention or
 
 ---
 layout: image-right
-image: https://images.unsplash.com/photo-1722083854982-2f1516cf263c
+# Fjords in southeastern coast of Greenland
+# https://unsplash.com/photos/blue-white-and-red-abstract-painting-3O2HJPzgkQY
+image: https://images.unsplash.com/photo-1579818276659-2943e3cd4b30
 ---
 
 # Lists & Styling
@@ -200,6 +208,8 @@ image: https://images.unsplash.com/photo-1722083854982-2f1516cf263c
 
 ---
 layout: image-left
+# Landsat 9 Image of Prudhoe Bay, Alaska
+# https://unsplash.com/photos/a-satellite-image-of-a-body-of-water-F8BGGoayfeQ
 image: https://images.unsplash.com/photo-1722082839868-d900d1a07e69
 class: image-narrow
 ---
@@ -263,9 +273,10 @@ Perfect for:
 ---
 layout: image-left
 class: image-narrow
+# Landsat 9 Image of Taklimakan Desert, China
+# https://unsplash.com/photos/KGzlTHjkyZM
 image: https://images.unsplash.com/photo-1722080767795-af488166033d
 ---
-
 
 # Decorative Rectangles
 
@@ -356,7 +367,9 @@ Animate code transitions smoothly
 
 ---
 layout: image-right
-image: /images/theme/iceberg-scoresby-sund.jpg
+# drone image of iceberg at Scoresby Sund, Greenland
+# https://unsplash.com/photos/iceberg-collage-U1mQ3wGcvtQ
+image: https://images.unsplash.com/photo-1536227019771-b2eac2dd6121
 class: image-narrow
 ---
 
@@ -421,6 +434,8 @@ SELECT * FROM products WHERE category = 'electronics' AND type = 'laptop'
 <LogoHorNegMono position="bottom-right" />
 ---
 layout: cover
+# Copernicus Sentinel-2 image of Tanezrouft Basin, Sahara, southern Algeria and northern Mali
+# https://en.wikipedia.org/wiki/Tanezrouft#/media/File:Tanezrouft_Basin_ESA22416295.jpeg
 background: '/images/theme/Tanezrouft_Basin.jpg'
 class: px-5
 ---
@@ -459,7 +474,9 @@ class DataProcessor:
 
 ---
 layout: cover
-background: '/images/theme/Tanezrouft_Basin.jpg'
+# Landsat 9 image of Bangladesh Coast
+# https://unsplash.com/photos/eGGENWtikd0
+background: https://images.unsplash.com/photo-1722083854850-4a24185465ac
 class: px-10
 ---
 
@@ -503,6 +520,8 @@ await fetchRepositories();
 
 ---
 layout: image-left
+# Landsat 8 image of the Ord River in Australia
+# https://unsplash.com/photos/2BThgnOYoIc
 image: https://images.unsplash.com/photo-1744968776986-3deb08e40a24
 class: image-narrow
 ---
@@ -531,6 +550,8 @@ pie title How I spent time preparing for my talk
 
 ---
 layout: image-right
+# Landsat 9 Image of Western Guinea-Bissau
+# https://unsplash.com/photos/ZuN44o80Bn0
 image: https://images.unsplash.com/photo-1722083854982-2f1516cf263c
 class: image-narrow
 ---
@@ -578,6 +599,8 @@ Dynamic QR codes powered by [`slidev-addon-qrcode`](https://github.com/kravetson
 
 ---
 layout: title
+# Landsat 9 image of Apostle Islands, Lake Superior
+# https://unsplash.com/photos/j7HqdQqn7Jo
 image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
 ---
 
@@ -625,7 +648,7 @@ image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
     <div opacity-70 w-100 class="text-[10px]">
       <div>Attributions:</div>
       <div>
-        Slide images from <a href="https://unsplash.com/@usgs?utm_source=ds-slides&utm_medium=referral" target="_blank" class="text-white hover:text-gray-200">USGS</a> on <a href="https://unsplash.com/?utm_source=ds-slides&utm_medium=referral">Unsplash</a>
+        Slide images from <a href="https://unsplash.com/@usgs?utm_source=ds-slides&utm_medium=referral" target="_blank" class="text-white hover:text-gray-200">USGS</a> & <a href="https://unsplash.com/@anniespratt?utm_source=ds-slides&utm_medium=referral" target="_blank" class="text-white hover:text-gray-200">Annie Spratt</a> on <a href="https://unsplash.com/?utm_source=ds-slides&utm_medium=referral">Unsplash</a>
       </div>
     </div>
   </div>
