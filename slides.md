@@ -17,10 +17,8 @@ layout: title
 image: /images/theme/lena-delta.jpg
 ---
 
-<LogoHorPos position="top-left" height="24px" />
 
 # DevelopmentSeed Slidev Theme
-
 
 ::subtitle::
 A showcase of layouts, components, and features
@@ -48,8 +46,7 @@ A showcase of layouts, components, and features
     </h5>
   </div>
 </DecorativeRectangle>
-
-<LogoHorNegMono position="bottom-center" />
+<LogoHorPos position="top-left" height="24px" />
 
 ---
 layout: image-right
@@ -582,7 +579,6 @@ Dynamic QR codes powered by [`slidev-addon-qrcode`](https://github.com/kravetson
 <div flex gap-4>
 <CurrentUrlQRCode  />
 <CurrentUrlQRCode  includeSlideNumber/>
-<CurrentUrlQRCode  url="https://developmentseed.org" />
 <CurrentUrlQRCode
   width="100" height="100" 
   image='/images/logos/symbol--pos-neg@2x.png'
