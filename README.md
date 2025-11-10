@@ -49,7 +49,8 @@ Typography:
 Layouts:
 1. default - Standard content layout
 2. cover - Title slides with gradient background
-3. text-image - Text on left, image on right (your common pattern)
+3. title - Title slides with image on bottom third
+4. two-cols - Two-column layout with configurable gap and ratio
 
 ### Usage
 

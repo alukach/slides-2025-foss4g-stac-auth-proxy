@@ -170,6 +170,87 @@ Beyond that, consider the `cover` and `title` layouts along with all the other l
 <LogoHorNegMono position="bottom-left" />
 
 ---
+layout: two-cols
+gap: 8
+---
+
+# Two Column Layout
+
+<div mt-5 />
+
+Perfect for side-by-side content:
+
+- Technical details
+- Code examples
+- Comparisons
+- Process flows
+
+```python
+def process_data(input):
+    result = transform(input)
+    return result
+```
+
+::right::
+
+<div mt-5 />
+
+## Features
+
+**Configurable spacing:**
+- Use `gap` prop for column spacing
+- Default is `gap: 4`
+
+**Flexible ratios:**
+- `leftRatio: 50` = 50/50 split (default)
+- `leftRatio: 60` = 60/40 split
+- `leftRatio: 40` = 40/60 split
+
+**Perfect for:**
+- Before/after comparisons
+- Diagrams with explanations
+- Multi-step processes
+
+<LogoHorPos position="bottom-right" height="24px" />
+
+<DecorativeRectangle
+  width="30%"
+  height="20%"
+  zIndex=10
+  :position="{
+    top: '-5%',
+    left: '19%',
+  }"
+  :customStyle="{ mixBlendMode: 'multiply' }"
+/>
+
+---
+layout: image-right
+image: https://images.unsplash.com/photo-1722083854982-2f1516cf263c
+---
+
+# Table Styling
+
+<div mt-5 />
+
+Tables are styled with brand colors and clean borders:
+
+| Feature | openEO | TiTiler |
+| --- | --- | --- |
+| **Data Model** | Multi-dimensional arrays | Rasters |
+| **Processing** | Batch (async) | Dynamic (sync) |
+| **Infrastructure** | Heavy (dask) | Lightweight |
+| **API** | Graph-based | Function-based |
+
+**Features:**
+- Orange header text
+- Clean borders
+- Proper spacing
+- Alternating row colors
+
+<LogoHorNegMono position="bottom-right" />
+
+---
 layout: iframe-right
 url: https://developmentseed.org/
 ---

@@ -230,6 +230,59 @@ blockquote p {
   background: #fff;
 }
 
-.slidev-code-wrapper, .slidev-code-block-title, .slidev-monaco-container {
+.slidev-code-wrapper,
+.slidev-code-block-title,
+.slidev-monaco-container {
   z-index: 1;
+}
+
+/* Table styling */
+table {
+  border-collapse: collapse;
+  padding: 0;
+  margin: 1rem 0;
+  width: auto;
+  position: relative;
+  z-index: 10;
+}
+
+table td,
+table th {
+  border-right: 2px solid #aaa;
+  padding: 0.5rem;
+  line-height: 1.2;
+  text-align: left;
+}
+
+table th {
+  border-bottom: 2px solid #aaa;
+  font-weight: 700;
+  color: var(--slidev-theme-primary);
+}
+
+table tr:first-child th {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+table tr:last-child td {
+  padding-bottom: 0;
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+table tr td:first-child,
+table tr th:first-child {
+  border-left: 0;
+}
+
+table tr td:last-child,
+table tr th:last-child {
+  border-right: 0;
+}
+
+/* Alternate row colors for better readability (optional) */
+table tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
 }
