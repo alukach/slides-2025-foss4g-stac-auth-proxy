@@ -1,7 +1,7 @@
 ---
-title: DevelopmentSeed Slidev Theme
+title: STAC Auth Proxy | FOSS4G 2025
 info: |
-  DevelopmentSeed Slidev Theme - A demonstration of layouts, components, and Slidev capabilities.
+  Auth Patterns and a Proxy-Based Approach
 class: text-center
 highlighter: shiki
 drawings:
@@ -17,11 +17,10 @@ layout: title
 image: /images/theme/lena-delta.jpg
 ---
 
-
-# DevelopmentSeed Slidev Theme
+# Securing STAC APIs
 
 ::subtitle::
-A showcase of layouts, components, and features
+Auth Patterns and a Proxy-Based Approach
 
 <DecorativeRectangle
   width="50%"
@@ -33,141 +32,113 @@ A showcase of layouts, components, and features
   }"
   :customStyle="{ mixBlendMode: 'multiply' }"
 >
-  <!-- You can place content _inside_ of rectangles! -->
   <div w-full h-full relative flex flex-col items-end justify-end p-4 text-white text-right>
-    <h3 text-5xl>
-      Your Event
+    <h3 text-5xl mb-0>
+      FOSS4G 2025
     </h3>
-    <h4 text-md font-mono>
-      2025-01-15
+    <h4 mb-0>
+      Auckland, NZ
     </h4>
-    <h5 text-sm>
-      <code text-primary>@presenter</code>
+    <h4 text-md font-mono mb-0>
+      2025-11-20
+    </h4>
+    <h5 text-sm mb-0>
+      <a href="//github.com/alukach">
+        <code text-primary>@alukach</code>
+      </a>
     </h5>
   </div>
 </DecorativeRectangle>
 <LogoHorPos position="top-left" height="24px" />
 
 ---
+layout: iframe-right
+url: https://developmentseed.org/team/anthony-lukach/
+---
+
+# about me
+
+cloud engineer @ developmentseed
+
+<!--
+
+I'm a Cloud Engineer with DevelopmentSeed
+
+DevelopmentSeed is a consultancy focused on open data and open source software, with an affinity for geospatial data.
+
+Working as a consultancy allows us to work with a number of partners and see a lot of different projects, which is a great position to be in when we try to build solutions to solve many peoples needs
+-->
+
+---
 layout: image-right
 # Landsat 8 Image of Ayon Island
 # https://unsplash.com/photos/B-bXvd0R1bM
-image: https://images.unsplash.com/photo-1722083855371-0d5a25647ce6
+image: /images/theme/landsat8-ayon-island.jpg
 class: image-narrow
 ---
 
-# Theme Features
+# devseed ❤️ stac
 
-* Custom brand colors
-* Roboto typography
-* Flexible layouts
-* Decorative components
 
-> Minimal theme, maximum impact
+<v-clicks>
 
-<LogoHorNegMono position="bottom-right" />
+* OGC supported standard (🎉)
+* flexible via extensions
+* well supported
 
-<!-- Also supports notes that are displayed in the presenter view. Just make sure that the comment is places at the END of the slide (after logo/rectangles) -->
+</v-clicks>
 
+<!--
+1. Has obtained OGC
+-->
 
 ---
 layout: image-right
-# Landsat 9 Image of Kangerdlugssuaq Glacier, Greenland
-# https://unsplash.com/photos/PgL1p8TBGNQ
-image: https://images.unsplash.com/photo-1722080768196-8983bbbb5c0f
+image: /images/theme/landsat8-klyuchevskaya-kamchatka.jpg
 class: image-narrow
 ---
 
-# Click Animations
+# state of auth within stac
+
+many strategies
+
+- JWTs
+- 🍪
+- basic auth
+- api tokens
 
 <v-click>
+choose your own adventure 🤷‍♂️</v-click>
 
-### Use `v-click` for progressive disclosure
-</v-click>
+<!--
+We've seen various implementations for authentication with STAC APIs
 
-<v-click>
-
-* First bullet appears
-* Second bullet appears
-* Third bullet appears
-</v-click>
-
-<v-click>
-
-> Perfect for revealing complex information step-by-step
-</v-click>
-
-<v-click>
-
-[📔 Docs](https://sli.dev/guide/animations)
-</v-click>
-
-<LogoHorNegMono position="bottom-left" />
-
----
-layout: image-left
-# Landsat 8 image of Klyuchevskaya, Kamchatka Peninsula, Siberia, Russia
-# https://unsplash.com/photos/yMcULenXoik
-image: https://images.unsplash.com/photo-1744968776900-311abae36ead
-class: image-narrow
----
-
-# V-Mark Features
-
-## Highlight and cross-off text
-
-Use `v-mark` + [Rough Notation](https://roughnotation.com/) to draw attention or indicate rejected options:
-
-- `v-mark.highlight.orange` - <span v-mark.highlight.orange>Highlight text and <code>code</code></span>
-- `v-mark.crossed-off` - <span v-mark.crossed-off>Cross off text</span>
-- `v-mark.strike-through` - <span v-mark.strike-through>Strike through text</span>
-- `v-mark.circle` - <span v-mark.circle>Circle text</span>
-- `v-mark.underline` - <span v-mark.underline>Underline text</span>
-
-[📔 Docs](https://sli.dev/features/rough-marker.html)
-
-<LogoHorNegMono position="bottom-left" />
+Each of these required a custom solution to validate incoming requests and to enforce
+unique needs
+-->
 
 ---
 layout: image-right
-# Fjords in southeastern coast of Greenland
-# https://unsplash.com/photos/blue-white-and-red-abstract-painting-3O2HJPzgkQY
-image: https://images.unsplash.com/photo-1579818276659-2943e3cd4b30
+image: /images/theme/landsat9-bangladesh-coast.jpg
 ---
 
-# Lists & Styling
+# common auth needs
 
-- Styled unordered lists
-  - Proper spacing
-    - Nested list support
-- Orange bullet points
+<v-clicks>
 
-1. We count
-2. And keep counting...
-   1. And count separately
-   2. And more!
-      1. It doesn't stop!
-3. Until we're finished.
+1. route-level auth
+2. record-level auth
+3. asset-level access
 
-<LogoHorNegMono position="bottom-right" />
+</v-clicks>
 
----
-layout: image-left
-# Landsat 9 Image of Prudhoe Bay, Alaska
-# https://unsplash.com/photos/a-satellite-image-of-a-body-of-water-F8BGGoayfeQ
-image: https://images.unsplash.com/photo-1722082839868-d900d1a07e69
-class: image-narrow
----
+<!--
+we've identified three major groupings for auth needs
 
-# Layouts
-
-We use `image-left` and `image-right` layouts for the majority of these slides, with optional `image-narrow` class for 1/3 width images.
-
-Beyond that, consider the `cover` and `title` layouts along with all the other layouts described in the docs.
-
-[📔 Docs](https://sli.dev/guide/layout)
-
-<LogoHorNegMono position="bottom-left" />
+1. Situations where a company wants to keep their entire catalog private, or perhaps just the transaction endpoints have authorization requirements to ensure that only certain users are permitted to alter data
+2. Situations where users are allowed to view data, but perhaps only a subset of the data in the catalog. This could be related to situations where users pay for access to data or where they can only view or edit data that they own
+3. The final
+-->
 
 ---
 layout: two-cols
@@ -252,298 +223,288 @@ Tables are styled with brand colors and clean borders:
 
 ---
 layout: iframe-right
-url: https://developmentseed.org/
+url: https://developmentseed.org/stac-auth-proxy/
 ---
 
-# Iframe Layout
+# enter: stac-auth-proxy
 
-### Embed External Content
-
-The `iframe-right` layout lets you display external websites alongside your content.
-
-Perfect for:
-- Documentation references
-- Live demos
-- Interactive examples
-
-**Note:**
-
-* Seems to open website in a mobile-layout
-* Doesn't work with github.com! 😿
-
-<LogoHorNegMono position="bottom-right" />
+during this talk, we'll review these three auth scenarios and how we developed `stac-auth-proxy` to address these needs
 
 ---
-layout: image-left
+layout: image-right
+image: /images/satsummit-screenshot.png
+---
+
+# backstory
+
+conceived at a casual "birds of a feather" during SatSummit Lisbon (2024)
+
+---
+layout: image-right
+image: /images/theme/landsat9-taklimakan-desert-china.jpg
 class: image-narrow
-# Landsat 9 Image of Taklimakan Desert, China
-# https://unsplash.com/photos/KGzlTHjkyZM
-image: https://images.unsplash.com/photo-1722080767795-af488166033d
 ---
 
-# Decorative Rectangles
+# why a proxy?
 
-## Slide feeling boring? 
+### many stac backends
 
-**💥SLAP A RECTANGLE ON IT!🟧✨**
+- `stac-fastapi-pgstac` <small>(python + postgis)</small>
+- `sfeos` <small>(python + elasticsearch/opensearch)</small>
+- `stac-fastapi-geoparquet` <small>(python + geoparquet)</small>
+- `franklin` <small>(scala + postgis)</small>
+- `staccato` <small>(java + elasticsearch)</small>
+- `stac-server` <small>(node + elasticsearch)</small>
 
-```vue
-<DecorativeRectangle
-  width="15em"
-  height="10rem"
-  zIndex=10
-  :position="{
-    top: '4em',
-    left: '7em',
-  }"
-  :customStyle="{ mixBlendMode: 'multiply' }"
-/>
+<!--
+any viable solution shouldn't require adopters to change their language/datastore
+-->
+
+---
+layout: image-right
+image: /images/theme/landsat9-western-guinea-bissau.jpg
+class: image-narrow
+---
+
+# strategy
+
+1. reach for existing open standards
+2. 
+
+---
+layout: image-right
+image: /images/theme/satellite-image-body-of-water.jpg
+class: image-narrow
+---
+
+# how does it work?
+
+* application gateway in front of your STAC API
+* integrates with OpenID Connect (OIDC) authentication servers (e.g. Keycloak, AWS Cognito, Auth0)
+* validates incoming requests
+* augments outgoing responses
+
+---
+layout: image-right
+image: /images/theme/satellite-image-body-of-water.jpg
+class: image-narrow
+---
+
+# sanity checks
+
+* on startup, the `stac-auth-proxy` will check your API
+
+---
+layout: image-right
+image: /images/theme/sentinel2a-southern-tibetan-plateau.jpg
+class: image-narrow
+---
+
+# *caveat:* not necessarily a proxy
+
+Usable as a library of ASGI Middleware
+
+````md magic-move
+
+```py
+pip install 'stac-auth-proxy'
 ```
 
-Play around with the [`mix-blend-mode`](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode#syntax)
+```py {|2|4-7|8-12}
+from fastapi import FastAPI
+from stac_auth_proxy import configure_app
 
-<DecorativeRectangle
-  width="23em"
-  height="10rem"
-  zIndex=10
-  :position="{
-    bottom: '2%',
-    left: '-1em',
-  }"
-  :customStyle="{ mixBlendMode: 'multiply' }"
-/>
-<LogoHorNegMono position="bottom-left" />
+# Setup an ASGI-compliant API
+app = FastAPI( 
+  ... # configure API
+)
+# Apply middleware to API
+configure_app(
+  app, 
+  ... # configure STAC Auth Proxy
+)
+```
+````
+
+<!--
+STAC Auth Proxy is really just ~10 middleware classes in a trench coat.
+
+If you would prefer to avoid running a separate service, you can also use the `configure_app` function to apply the middleware directly onto your STAC API
+
+Admittedly, we've only tested this with FastAPI applications.
+-->
+
 ---
-layout: image-left
+layout: image-right
+image: /images/theme/Tanezrouft_Basin.jpg
+class: image-narrow
+---
+
+# how do we use it?
+
+base-level of configuration
+
+```dotenv {all|1|2|all}
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+```
+<!-- 
+
+when running as either a proxy application or as middleware, we lean on environment variables to configure. as middleware, these values can alternatively be provided by keyword arguments
+
+we aim for _sensible-defaults_
+
+ -->
+---
+layout: image-right
 image: /images/theme/lena-delta.jpg
 class: image-narrow
 ---
 
-# Magic Move
-
-Animate code transitions smoothly
+# route-level auth
 
 ````md magic-move
-```json
-{
-  "id": "product-123",
-  "name": "Widget",
-  "price": 29.99
+```dotenv {3}
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+DEFAULT_PUBLIC=true|false
+```
+
+```dotenv {3}
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+DEFAULT_PUBLIC=false
+```
+
+```dotenv {3-11}
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+DEFAULT_PUBLIC=false
+# everything's private, except for non-data endpoints...
+PUBLIC_ENDPOINTS={
+  "^/$": ["GET"],
+  "^/api.html$": ["GET"],
+  "^/api$": ["GET"],
+  "^/conformance$": ["GET"],
+  "^/docs/oauth2-redirect": ["GET"],
+  "^/healthz": ["GET"]
 }
 ```
-```json
-{
-  "id": "product-123",
-  "name": "Premium Widget",
-  "price": 39.99,
-  "category": "electronics",
-  "inStock": true
+
+```dotenv {3}
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+DEFAULT_PUBLIC=true
+```
+
+```dotenv {3-11}
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+DEFAULT_PUBLIC=true
+# everything's public, except for transactions-extension endpoints...
+PRIVATE_ENDPOINTS={
+  "^/collections$": ["POST"],
+  "^/collections/([^/]+)$": ["PUT", "PATCH", "DELETE"],
+  "^/collections/([^/]+)/items$": ["POST"],
+  "^/collections/([^/]+)/items/([^/]+)$": ["PUT", "PATCH", "DELETE"],
+  "^/collections/([^/]+)/bulk_items$": ["POST"]
+}
+```
+
+```dotenv {3-11}
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+DEFAULT_PUBLIC=true
+# PRIVATE_ENDPOINTS can be overridden to check for scope claims...
+PRIVATE_ENDPOINTS={
+  "^/collections$": [["POST", "stac:collection:create"]],
+  "^/collections/([^/]+)$": [["PUT", "stac:collection:update"], ["PATCH", "stac:collection:update"], ["DELETE", "stac:collection:delete"]],
+  "^/collections/([^/]+)/items$": [["POST", "stac:item:create"]],
+  "^/collections/([^/]+)/items/([^/]+)$": [["PUT", "stac:item:update"], ["PATCH", "stac:item:update"], ["DELETE", "stac:item:delete"]],
+  "^/collections/([^/]+)/bulk_items$": [["POST", "stac:item:create"]],
 }
 ```
 ````
 
-[📔 Docs](https://sli.dev/features/shiki-magic-move)
-
-
-<LogoHorNegMono position="bottom-left" />
-
 ---
 layout: image-right
-# Sentinel-2A image of the Southern Tibetan Plateau
-# image: https://images.unsplash.com/photo-1536227019771-b2eac2dd6121
-image: https://images.unsplash.com/photo-1744968777300-210d3bb46817
+image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
 class: image-narrow
 ---
 
-## Synchronized Animations
+# integration w/ [authentication extension](https://github.com/stac-extensions/authentication)
 
-Magic-move with v-mark highlighting
+a core principal of the STAC specification is its ability to describe itself.
 
 ````md magic-move
-```json
-```
-```json
-// 1 - Client request
-GET /api/products/search
-```
-```json
-// 2 - Parse parameters
+```json [foo.js]
 {
-  "path": "/api/products/search",
-  "query": "laptops"
+  ...
+  "conformsTo": [
+    ...
+  ],
+  "stac_extensions": [
+    ...
+  ],
+  "links": [
+    ...
+  ]
 }
 ```
-```json
-// 3 - Build search query
+```json [foo.js]
 {
-  "path": "/api/products/search",
-  "query": "laptops",
-  "filter": "category = electronics AND type = laptop"
+  ...
+  "stac_extensions": [
+    ...
+    "https://stac-extensions.github.io/authentication/v1.1.0/schema.json"
+  ],
 }
 ```
+
 ```json
-// 4 - Add to request
 {
-  "path": "/api/products/search?filter=category = electronics",
-  "query": "laptops",
-  "filter": "category = electronics AND type = laptop"
+  ...
+  "links": [
+    ...
+    {
+      "rel": "data",
+      "type": "application/json",
+      "title": "Collections available for this Catalog",
+      "href": "http://localhost:8000/collections"
+    },
+  ]
 }
 ```
+
 ```json
-// 5 - Execute database query
-SELECT * FROM products WHERE category = 'electronics' AND type = 'laptop'
+{
+  ...
+  "links": [
+    ...
+    {
+      "rel": "data",
+      "type": "application/json",
+      "title": "Collections available for this Catalog",
+      "href": "http://localhost:8000/collections",
+      "auth:refs": [
+        "oidc"
+      ]
+    },
+  ]
+}
 ```
 ````
-
-1. <span v-mark.highlight.orange="{ at: 1, to: 2 }">Client sends request</span>
-2. <span v-mark.highlight.orange="{ at: 2, to: 3 }">Parse query parameters</span>
-3. <span v-mark.highlight.orange="{ at: 3, to: 4 }">Build search filter</span>
-4. <span v-mark.highlight.orange="{ at: 4, to: 5 }">Append to request</span>
-5. <span v-mark.highlight.orange="{ at: 5 }">Execute against database</span>
-
-<LogoHorNegMono position="bottom-right" />
-
----
-layout: cover
-# Copernicus Sentinel-2 image of Tanezrouft Basin, Sahara, southern Algeria and northern Mali
-# https://en.wikipedia.org/wiki/Tanezrouft#/media/File:Tanezrouft_Basin_ESA22416295.jpeg
-background: '/images/theme/Tanezrouft_Basin.jpg'
-class: px-5
----
-
-# Code Highlighting
-
-Line-by-Line Focus
-
-```python [filename.py] {all|5|8|9-10|all}
-@dataclasses.dataclass
-class DataProcessor:
-    """Process data with configurable filters"""
-
-    async def __call__(self, context: dict[str, Any]) -> str:
-        """Apply processing based on context parameters"""
-        logger.debug("Processing with context %s", context)
-        filter_type = context.get("filter")
-        if filter_type:
-            return f"filter: {filter_type}"
-        return "default"
-
-```
-
-<LogoHorNegMono position="bottom-right" />
-
-
----
-layout: cover
-# Landsat 9 image of Bangladesh Coast
-# https://unsplash.com/photos/eGGENWtikd0
-background: https://images.unsplash.com/photo-1722083854850-4a24185465ac
-class: px-10
----
-
-### Monaco Editor
-
-Interactive code with live execution
-
-```ts {monaco-run} {autorun:true}
-/**
- * Fetch GitHub repositories for an organization
- */
-async function fetchRepositories(org: string = 'developmentseed') {
-  const url = `https://api.github.com/orgs/${org}/repos?per_page=5&sort=updated`;
-  console.log(`Fetching ${url}...`)
-  const response = await fetch(url);
-  const data = await response.json();
-  console.log(`Found ${data.length} repositories`)
-  if (!data.length) return console.log('No repositories found')
-  for (const repo of data) {
-    console.log(` - ${repo.name} (⭐ ${repo.stargazers_count})`);
-  }
-}
-
-await fetchRepositories();
-```
-
-<LogoHorNegMono position="top-right" />
-
-<!-- NOTE: Monaco's interactive code runner does NOT play well with presenter mode. If you are presenting and want to do live code edits, do those edits on the shared screen, not in the presenter's view -->
-
----
-layout: image-left
-# Landsat 8 image of the Ord River in Australia
-# https://unsplash.com/photos/2BThgnOYoIc
-image: https://images.unsplash.com/photo-1744968776986-3deb08e40a24
-class: image-narrow
----
-
-# Mermaid Diagrams
-
-```mermaid
-pie title How I spent time preparing for my talk
-"Writing slide content" : 3
-"Looking for cool satellite imagery" : 79
-```
-
-[📔 Docs](https://docs.mermaidchart.com/mermaid-oss/intro/index.html)
-
-<LogoHorNegMono position="bottom-left" />
-
----
-layout: image-right
-# Landsat 9 Image of Western Guinea-Bissau
-# https://unsplash.com/photos/ZuN44o80Bn0
-image: https://images.unsplash.com/photo-1722083854982-2f1516cf263c
-class: image-narrow
----
-
-# QR Code Component
-
-<div text-xs>
-
-Dynamic QR codes powered by [`slidev-addon-qrcode`](https://github.com/kravetsone/slidev-addon-qrcode)
-
-
-```jsx
-<CurrentUrlQRCode />
-<CurrentUrlQRCode includeSlideNumber/>
-<CurrentUrlQRCode 
-  width="100" height="100" 
-  image='/images/logos/symbol--pos-neg@2x.png'
-  url="https://developmentseed.org"
-  :dotsOptions="{ 
-    type: 'dots', 
-    color: 'var(--slidev-theme-primary)' 
-  }"
-/>
-```
-
-</div>
-
-<div flex gap-4>
-<CurrentUrlQRCode  />
-<CurrentUrlQRCode  includeSlideNumber/>
-<CurrentUrlQRCode
-  width="100" height="100" 
-  image='/images/logos/symbol--pos-neg@2x.png'
-  url="https://developmentseed.org"
-  :dotsOptions="{ 
-    type: 'dots', 
-    color: 'var(--slidev-theme-primary)' 
-  }"
-/>
-</div>
-
-
-<LogoHorNegMono position="bottom-right" />
 
 ---
 layout: title
 # Landsat 9 image of Apostle Islands, Lake Superior
 # https://unsplash.com/photos/j7HqdQqn7Jo
-image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
+image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
 ---
 
 # Thank you!
+
+## Questions?
 
 <DecorativeRectangle
   width="30%"
@@ -558,21 +519,17 @@ image: https://images.unsplash.com/photo-1722080767251-aad7fa1796d3
   <div w-full h-full relative flex flex-col items-start justify-between p-4 text-white text-left class="[&_a]:no-underline [&_a]:text-white [&_a:hover]:text-gray-200">
     <div mb-4 flex flex-col gap-5 items-start justify-start text-sm font-mono class="[&_a]:flex [&_a]:items-center [&_a]:gap-1">
       <Logo src="/images/logos/hor--neg-mono@2x.png" height="24px" alt="DevelopmentSeed" class="!relative !top-0 !left-0" />
-      <a href="https://developmentseed.org" target="_blank" title="Website">
-        <WebsiteIcon size="20" pr-1 />
-        <span>developmentseed.org</span>
-      </a>
-      <a href="mailto:hello@developmentseed.org" title="Email">
+      <a href="mailto:anthony@developmentseed.org" title="Email">
         <EmailIcon size="20" pr-1 />
-        <span>hello@developmentseed.org</span>
+        <span>anthony@developmentseed.org</span>
       </a>
-      <a href="https://github.com/developmentseed" target="_blank" title="GitHub">
+      <a href="https://github.com/alukach" target="_blank" title="GitHub">
         <GitHubIcon size="20" pr-1 />
-        <span>@developmentseed</span>
+        <span>@alukach</span>
       </a>
-      <a href="https://www.linkedin.com/company/development-seed" target="_blank" title="LinkedIn">
+      <a href="https://www.linkedin.com/in/alukach" target="_blank" title="LinkedIn">
         <LinkedInIcon size="20" pr-1 />
-        <span>development-seed</span>
+        <span>in/alukach</span>
       </a>
       <!-- <a href="https://developmentseed.org/careers" target="_blank" class="font-sans" text-xs text-strong text-italics>
         <span pr-1>🚀</span>

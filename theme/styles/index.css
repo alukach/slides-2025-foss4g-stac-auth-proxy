@@ -17,10 +17,6 @@
   --slidev-font-family-mono: "Roboto Mono", monospace;
 }
 
-p {
-  margin-top: 1em;
-}
-
 a {
   color: var(--slidev-theme-primary);
   text-decoration: underline;
@@ -42,6 +38,12 @@ span[v-mark] code {
   background-color: transparent !important;
 }
 
+.slidev-page p,
+.slidev-page li,
+.slidev-page:not(:has(.slidev-code-highlighted)) span {
+  font-size: 1.25rem;
+}
+
 /* Apply DevelopmentSeed typography */
 h1,
 h2,
@@ -51,10 +53,11 @@ h5,
 h6 {
   font-family: var(--slidev-font-family-heading);
   font-weight: 700;
+  margin-bottom: 2rem;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   line-height: 1.2;
 }
 
@@ -176,22 +179,6 @@ blockquote p {
 .bg-info {
   background-color: var(--slidev-theme-info);
   color: white;
-}
-
-/* Ensure content appears above decorative rectangles */
-.slidev-layout h1,
-.slidev-layout h2,
-.slidev-layout h3,
-.slidev-layout h4,
-.slidev-layout h5,
-.slidev-layout h6,
-.slidev-layout p,
-.slidev-layout ul,
-.slidev-layout ol,
-.slidev-layout pre,
-.slidev-layout blockquote {
-  position: relative;
-  z-index: 10;
 }
 
 /* Add padding to default layout */
