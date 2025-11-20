@@ -40,7 +40,7 @@ Auth Patterns and a Proxy-Based Approach
       Auckland, NZ
     </h4>
     <h4 text-md font-mono mb-0>
-      2025-11-20
+      2025-11-21
     </h4>
     <h5 text-sm mb-0>
       <a href="//github.com/alukach">
@@ -59,14 +59,16 @@ image: /images/theme/landsat8-ayon-island.jpg
 class: image-narrow
 ---
 
-# ❤️ stac 🚀
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# ❤️ STAC 🚀
 
 
 <v-clicks>
 
-* OGC supported standard (🎉)
-* flexible via extensions
-* well supported
+* OGC-supported standard (🎉)
+* Flexible via extensions
+* Well supported
 
 </v-clicks>
 
@@ -75,7 +77,7 @@ I'm a Cloud Engineer with DevelopmentSeed
 
 DevelopmentSeed is a consultancy focused on open data and open source software, with an affinity for geospatial data.
 
-Working as a consultancy allows us to work with a number of partners and see a lot of different projects, which is a great position to be in when we try to build solutions to solve many peoples needs
+Working as a consultancy allows us to work with a number of partners and see a lot of different projects, which is a great position to be in when we try to build solutions to solve many people's needs
 -->
 
 ---
@@ -84,17 +86,19 @@ image: /images/theme/landsat8-klyuchevskaya-kamchatka.jpg
 class: image-narrow
 ---
 
-# state of auth within stac
+<LogoHorNegMono position="bottom-right" height="20px" />
 
-many strategies
+# State of Auth Within STAC
+
+Many strategies exist:
 
 - JWTs
 - 🍪
-- basic auth
-- api tokens
+- Basic auth
+- API tokens
 
 <v-click>
-choose your own adventure 🤷‍♂️
+Choose your own adventure 🤷‍♂️
 </v-click>
 
 <!--
@@ -109,22 +113,24 @@ layout: image-right
 image: /images/theme/landsat9-bangladesh-coast.jpg
 ---
 
-# common auth needs
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# Common Auth Needs
 
 <v-clicks>
 
-1. route-level auth
-2. record-level auth
-3. asset-level access
+1. Route-level auth
+2. Record-level auth
+3. Asset-level access
 
 </v-clicks>
 
 <!--
-we've identified three major groupings for auth needs
+We've identified three major groupings for auth needs:
 
 1. Situations where a company wants to keep their entire catalog private, or perhaps just the transaction endpoints have authorization requirements to ensure that only certain users are permitted to alter data
 2. Situations where users are allowed to view data, but perhaps only a subset of the data in the catalog. This could be related to situations where users pay for access to data or where they can only view or edit data that they own
-3. The final
+3. Asset-level access control for individual files
 -->
 
 ---
@@ -132,18 +138,20 @@ layout: iframe-right
 url: https://developmentseed.org/stac-auth-proxy/
 ---
 
-# enter: stac-auth-proxy
+# Enter: stac-auth-proxy
 
-during this talk, we'll review these three auth scenarios and how we developed `stac-auth-proxy` to address these needs
+During this talk, we'll review these three auth scenarios and how we developed `stac-auth-proxy` to address these needs
 
 ---
 layout: image-right
 image: /images/satsummit-screenshot.png
 ---
 
-# backstory
+<LogoHorNegMono position="bottom-right" height="20px" />
 
-conceived at a casual "birds of a feather" during SatSummit Lisbon (2024)
+# Backstory
+
+Conceived at a casual "birds of a feather" session during SatSummit Lisbon (2024)
 
 ---
 layout: image-right
@@ -151,9 +159,11 @@ image: /images/theme/landsat9-taklimakan-desert-china.jpg
 class: image-narrow
 ---
 
-# why a proxy?
+<LogoHorNegMono position="bottom-right" height="20px" />
 
-### many stac backends
+# Why a Proxy?
+
+### Many STAC Backends
 
 - `stac-fastapi-pgstac` <small>(python + postgis)</small>
 - `sfeos` <small>(python + elasticsearch/opensearch)</small>
@@ -172,12 +182,14 @@ image: /images/theme/landsat9-western-guinea-bissau.jpg
 class: image-narrow
 ---
 
-# strategy
+<LogoHorNegMono position="bottom-right" height="20px" />
 
-1. target most common needs
-2. embrace for existing open standards
-3. minimize configuration overhead via sensible defaults
-4. usable as a standalone service or customizable with code
+# Strategy
+
+1. Target most common needs
+2. Embrace existing open standards
+3. Minimize configuration overhead via sensible defaults
+4. Usable as a standalone service or customizable with code
 
 ---
 layout: image-right
@@ -185,7 +197,9 @@ image: /images/theme/satellite-image-body-of-water.jpg
 class: image-narrow
 ---
 
-# how does it work?
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# How Does It Work?
 
 
 ```mermaid
@@ -219,6 +233,8 @@ layout: image-right
 image: /images/theme/sentinel2a-southern-tibetan-plateau.jpg
 class: image-narrow
 ---
+
+<LogoHorNegMono position="bottom-right" height="20px" />
 
 # *note:* not necessarily a proxy
 
@@ -260,9 +276,11 @@ image: /images/theme/Tanezrouft_Basin.jpg
 class: image-narrow
 ---
 
-# how do we use it?
+<LogoHorNegMono position="bottom-right" height="20px" />
 
-base-level of configuration
+# How Do We Use It?
+
+Base-level configuration
 
 ```dotenv {all|1|2|all}
 UPSTREAM_URL=http://stac:8001
@@ -281,12 +299,14 @@ image: /images/theme/landsat9-kangerdlugssuaq-greenland.jpg
 class: image-narrow
 ---
 
-# route-level
+<LogoHorNegMono position="bottom-right" height="20px" />
 
-* **intention:** limit access to STAC endpoints
-* **use cases:**
-  * private STAC APIs
-  * guarded access to Transactions Extension
+# Route-Level Auth
+
+* **Intention:** Limit access to STAC endpoints
+* **Use cases:**
+  * Private STAC APIs
+  * Guarded access to Transactions Extension
 
 ---
 layout: image-right
@@ -294,7 +314,9 @@ image: /images/theme/landsat8-ord-river-australia.jpg
 class: image-narrow
 ---
 
-# route-level auth configuration
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# Route-Level Auth Configuration
 
 ````md magic-move
 ```dotenv {3}
@@ -365,7 +387,9 @@ image: /images/theme/blue-white-red-abstract-painting.jpg
 class: image-narrow
 ---
 
-# reuse:  [authentication extension](https://github.com/stac-extensions/authentication)[^1]
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# Reuse: [Authentication Extension](https://github.com/stac-extensions/authentication)[^1]
 
 
 `GET /`
@@ -481,7 +505,9 @@ image: /images/theme/lena-delta.jpg
 class: image-narrow
 ---
 
-# reuse: [openapi spec](https://github.com/stac-extensions/authentication)
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# Reuse: [OpenAPI Spec](https://github.com/stac-extensions/authentication)
 
 ````md magic-move
 ```
@@ -553,7 +579,7 @@ url: https://test.openveda.cloud/api/stac/docs
 scale: 0.75
 ---
 
-# reuse: [openapi spec](https://github.com/stac-extensions/authentication) (cont.)
+# Reuse: [OpenAPI Spec](https://github.com/stac-extensions/authentication) (cont.)
 
 
 ![](./public/images/swagger%20-%20header.png)
@@ -567,14 +593,16 @@ image: /images/theme/satellite-image-body-of-water.jpg
 class: image-narrow
 ---
 
-# record-level auth
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# Record-Level Auth
 
 
-* **intention:** only return authorized records (items/collections)
-* **use cases:**
-  * hiding "draft" data
-  * exposing data via subscription model
-  * multitenancy
+* **Intention:** Only return authorized records (items/collections)
+* **Use cases:**
+  * Hiding "draft" data
+  * Exposing data via subscription model
+  * Multitenancy
 
 
 
@@ -584,14 +612,16 @@ image: /images/theme/landsat9-bangladesh-coast.jpg
 class: image-narrow
 ---
 
-# record-level auth strategy
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# Record-Level Auth Strategy
 
 <v-switch>
 
 <template #0>
 
-1. generate CQL2 expressions based on request context
-2. apply CQL2 filters via filters extension[^1]
+1. Generate CQL2 expressions based on request context
+2. Apply CQL2 filters via filters extension[^1]
 
 </template>
 
@@ -639,7 +669,9 @@ image: /images/theme/landsat9-taklimakan-desert-china.jpg
 class: image-narrow
 ---
 
-# record-level auth configuration
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# Record-Level Auth Configuration
 
 ````md magic-move
 
@@ -671,7 +703,9 @@ image: /images/theme/landsat9-western-guinea-bissau.jpg
 class: image-narrow
 ---
 
-# filter factory
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# Filter Factory
 
 ````md magic-move
 
@@ -730,7 +764,9 @@ background: '/images/theme/blue-white-red-abstract-painting.jpg'
 class: px-5
 ---
 
-# builtin filter factories
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# Built-in Filter Factories
 
 ```dotenv
 # Jinja2
@@ -751,7 +787,9 @@ class: image-narrow
 image: '/images/theme/Tanezrouft_Basin.jpg'
 ---
 
-# record-level auth example: NASA VEDA
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# Record-Level Auth Example: NASA VEDA
 
 1. <span v-mark.highlight.orange="{ at: 1, to: 2 }">Incoming request</span>
 2. <span v-mark.highlight.orange="{ at: 2, to: 3 }">Get tenant from path of request</span>
@@ -803,7 +841,9 @@ background: '/images/theme/satellite-image-body-of-water.jpg'
 class: px-5
 ---
 
-# VEDA - Associate collections with a Tenant
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# VEDA - Associate Collections with a Tenant
 
 `/collections/bangladesh-landcover-2001-2020`
 
@@ -831,6 +871,8 @@ background: '/images/theme/lena-delta.jpg'
 class: px-5
 ---
 
+<LogoHorNegMono position="bottom-right" height="20px" />
+
 # VEDA - Build CQL2 Filter Factories
 
 ## Collections
@@ -856,6 +898,8 @@ layout: cover
 background: '/images/theme/Tanezrouft_Basin.jpg'
 class: px-5
 ---
+
+<LogoHorNegMono position="bottom-right" height="20px" />
 
 # VEDA - Build CQL2 Filter Factories
 
@@ -888,6 +932,8 @@ layout: cover
 background: '/images/theme/landsat8-ayon-island.jpg'
 ---
 
+<LogoHorNegMono position="bottom-right" height="20px" />
+
 <div style="font-size: 1rem;">
 
 ```ts {monaco-run} {autorun:true}
@@ -918,11 +964,13 @@ image: /images/theme/sentinel2a-southern-tibetan-plateau.jpg
 class: image-narrow
 ---
 
-# asset-level auth
+<LogoHorNegMono position="bottom-right" height="20px" />
 
-* **intention:** couple the business logic of viewing stac records with the business logic of accessing records
-* **use cases:**
-  * private assets
+# Asset-Level Auth
+
+* **Intention:** Link viewing permissions with access permissions for STAC records
+* **Use cases:**
+  * Private assets
 
 ---
 layout: image-right
@@ -930,7 +978,9 @@ image: /images/theme/landsat9-kangerdlugssuaq-greenland.jpg
 class: image-narrow
 ---
 
-# signed-urls via authentication extension
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# Signed URLs via Authentication Extension
 
 ````md magic-move
 
@@ -1057,11 +1107,13 @@ image: /images/theme/landsat8-ord-river-australia.jpg
 class: image-narrow
 ---
 
-# what's next?
+<LogoHorNegMono position="bottom-right" height="20px" />
 
-* asset-level access
-* record-level auth for transactions endpoints
-* performance upgrades
+# What's Next?
+
+* Asset-level access
+* Record-level auth for Transactions endpoints
+* Performance upgrades
 
 ---
 layout: title
