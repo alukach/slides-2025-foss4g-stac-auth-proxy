@@ -766,6 +766,31 @@ ITEMS_FILTER_KWARGS='{"cache_ttl": 30.0}'
 
 ---
 layout: image-right
+class: image-narrow bg-black text-white
+image: '/images/theme/Tanezrouft_Basin.jpg'
+---
+
+<LogoHorNegMono position="bottom-right" height="20px" />
+
+# Example: Multitenancy in NASA VEDA
+
+![](https://www.earthdata.nasa.gov/themes/custom/project/hds_earthdata/nasa-earthdata-logo.png)
+
+<br my-5 />
+
+**VEDA:** an open source platform for visualization, exploration, and data analysis
+
+**ODSI:** NASA’s Office of Data Science and Informatics at the agency’s Marshall Space Flight Center (MSFC) in Huntsville, Alabama
+
+<v-click>
+
+<div text-4xl text-center>🙏 ❤️ 🙌</div>
+
+</v-click>
+
+
+---
+layout: image-right
 class: image-narrow
 image: '/images/theme/Tanezrouft_Basin.jpg'
 ---
