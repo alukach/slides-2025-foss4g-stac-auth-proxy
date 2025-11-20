@@ -579,14 +579,6 @@ url: https://test.openveda.cloud/api/stac/docs
 scale: 0.75
 ---
 
-# Reuse: [OpenAPI Spec](https://github.com/stac-extensions/authentication) (cont.)
-
-
-![](./public/images/swagger%20-%20header.png)
-
-![](./public/images/swagger%20-%20endpoints.png)
-
-
 ---
 layout: image-right
 image: /images/theme/satellite-image-body-of-water.jpg
