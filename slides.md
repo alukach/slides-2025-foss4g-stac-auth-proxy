@@ -59,7 +59,7 @@ image: /images/theme/landsat8-ayon-island.jpg
 class: image-narrow
 ---
 
-# devseed ❤️ stac
+# ❤️ stac 🚀
 
 
 <v-clicks>
@@ -94,7 +94,8 @@ many strategies
 - api tokens
 
 <v-click>
-choose your own adventure 🤷‍♂️</v-click>
+choose your own adventure 🤷‍♂️
+</v-click>
 
 <!--
 We've seen various implementations for authentication with STAC APIs
