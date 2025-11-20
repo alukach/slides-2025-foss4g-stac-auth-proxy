@@ -40,9 +40,7 @@ span[v-mark] code {
 
 .slidev-page p,
 .slidev-page li,
-.slidev-page:not(:has(.slidev-code-highlighted)):not(:has(.monaco-editor)):not(
-    :has(.slidev-code-wrapper)
-  )
+.slidev-page:not(:has(.slidev-code-highlighted)):not(:has(.monaco-editor)):not(:has(.slidev-code-wrapper)):not(:has(.decorative-rectangle))
   span {
   font-size: 1.25rem;
 }
