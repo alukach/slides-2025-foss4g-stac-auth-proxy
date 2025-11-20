@@ -63,14 +63,9 @@ class: image-narrow
 
 # ❤️ STAC 🚀
 
-
-<v-clicks>
-
 * OGC-supported standard (🎉)
 * Flexible via extensions
 * Well supported
-
-</v-clicks>
 
 <!--
 I'm a Cloud Engineer with DevelopmentSeed
@@ -117,13 +112,9 @@ image: /images/theme/landsat9-bangladesh-coast.jpg
 
 # Common Auth Needs
 
-<v-clicks>
-
 1. Route-level auth
 2. Record-level auth
 3. Asset-level access
-
-</v-clicks>
 
 <!--
 We've identified three major groupings for auth needs:
