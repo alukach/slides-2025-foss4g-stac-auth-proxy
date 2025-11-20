@@ -670,34 +670,243 @@ image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
 class: image-narrow
 ---
 
-# record-level auth configuration
+# filter factory
 
 ````md magic-move
 
-```dotenv
-UPSTREAM_URL=http://stac:8001
-OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+```py {|1|2-11|13-18|}
+filter_expr = await filter_builder(
+    {
+        "req": {
+            "path": request.url.path,
+            "method": request.method,
+            "query_params": dict(request.query_params),
+            "path_params": requests.extract_variables(request.url.path),
+            "headers": dict(request.headers),
+        },
+        **scope["state"],
+    }
+)
+cql2_filter = Expr(filter_expr)
+try:
+    cql2_filter.validate()
+except ValidationError:
+    logger.error("Invalid CQL2 filter: %s", filter_expr)
+    return Response(status_code=502, content="Invalid CQL2 filter")
 ```
 
-```dotenv {|3|4}
-UPSTREAM_URL=http://stac:8001
-OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
-COLLECTIONS_FILTER_CLS=my_package.filters:MyCollectionsFilter
-COLLECTIONS_FILTER_ARGS=["foo", "bar"]
+```py
+import dataclasses
+from typing import Any
+
+from cql2 import Expr
+
+
+@dataclasses.dataclass
+class ExampleFilter:
+    async def __call__(self, context: dict[str, Any]) -> str:
+        return "true"
 ```
 
-```dotenv
-UPSTREAM_URL=http://stac:8001
-OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
-COLLECTIONS_FILTER_CLS=my_package.filters:MyCollectionsFilter
-COLLECTIONS_FILTER_ARGS=["foo", "bar"]
-ITEMS_FILTER_CLS=my_package.filters:MyItemsFilter
-ITEMS_FILTER_ARGS=["baz"]
+```py
+from typing import Any
+
+from cql2 import Expr
+
+
+def example_filter():
+    async def example_filter(context: dict[str, Any]) -> str | dict[str, Any]:
+        return Expr("true")
+    return example_filter
 ```
 ````
 
-
 [^1]: https://github.com/stac-api-extensions/filter
+
+---
+layout: cover
+background: '/images/theme/Tanezrouft_Basin.jpg'
+class: px-5
+---
+
+# builtin filter factories
+
+```dotenv
+# Jinja2
+ITEMS_FILTER_CLS=stac_auth_proxy.filters:Template
+ITEMS_FILTER_ARGS=['{{ "true" if payload else "(preview IS NULL) OR (preview = false)" }}']
+```
+
+```dotenv
+# OPA
+ITEMS_FILTER_CLS=stac_auth_proxy.filters:Opa
+ITEMS_FILTER_ARGS='["http://opa:8181", "stac/items/allow"]'
+ITEMS_FILTER_KWARGS='{"cache_ttl": 30.0}'
+```
+
+---
+layout: image-right
+class: image-narrow
+image: '/images/theme/Tanezrouft_Basin.jpg'
+---
+
+# record-level auth example: NASA VEDA
+
+1. <span v-mark.highlight.orange="{ at: 1, to: 2 }">Incoming request</span>
+2. <span v-mark.highlight.orange="{ at: 2, to: 3 }">Get tenant from path of request</span>
+3. <span v-mark.highlight.orange="{ at: 3, to: 4 }">Build a filter to return only data for that tenant</span>
+4. <span v-mark.highlight.orange="{ at: 4, to: 5 }">Append filter to request</span>
+5. <span v-mark.highlight.orange="{ at: 5 }">Let STAC FastAPI process request</span>
+
+
+
+````md magic-move
+```json 
+```
+```json 
+// 1 - Incoming request from User
+GET /api/stac/fire-tenant/collections
+```
+```json
+// 2 - Tenant Extraction
+{
+  "path": "/api/stac/collections",  // cleaned up
+  "tenant": "fire-tenant"  // figured out the tenant
+}
+```
+```json
+// 3 - Filter Generation
+{
+  "path": "/api/stac/collections",
+  "tenant": "fire-tenant",
+  "filter": "dashboard:tenant = fire-tenant"   // built filter
+}
+```
+```json
+// 4 - Request Augmentation
+{
+  "path": "/api/stac/collections?filter=dashboard:tenant = fire-tenant",  // appended filter
+  "tenant": "fire-tenant",
+  "filter": "dashboard:tenant = fire-tenant"   // built filter
+}
+```
+```json
+// 5 - Outgoing request to STAC FastAPI pgSTAC
+GET /api/stac/collections?filter=dashboard:tenant = fire-tenant
+```
+````
+
+---
+layout: cover
+background: '/images/theme/Tanezrouft_Basin.jpg'
+class: px-5
+---
+
+# VEDA - Associate collections with a Tenant
+
+`/collections/bangladesh-landcover-2001-2020`
+
+````md magic-move
+```json 
+{
+  "id": "bangladesh-landcover-2001-2020",
+  "type": "Collection",
+  // ...
+}
+```
+```json
+{
+  "id": "bangladesh-landcover-2001-2020",
+  "type": "Collection",
+  // ...
+  "dashboard:tenant": "earth-tenant",
+}
+```
+````
+
+---
+layout: cover
+background: '/images/theme/Tanezrouft_Basin.jpg'
+class: px-5
+---
+
+# VEDA - Build CQL2 Filter Factories
+
+## Collections
+
+```python {all|5|8|9-10|all}
+@dataclasses.dataclass
+class CollectionFilter:
+    """Tooling to filter STAC Collections by tenant"""
+
+    async def __call__(self, context: dict[str, Any]) -> str:
+        """If tenant is present on request, filter Collections by that tenant"""
+        logger.debug("calling CollectionFilter with context %s", context)
+        tenant = context.get("tenant")
+        if tenant:
+            return f"dashboard:tenant = '{tenant}'"
+        return "1=1"
+
+```
+
+
+---
+layout: cover
+background: '/images/theme/Tanezrouft_Basin.jpg'
+class: px-5
+---
+
+# VEDA - Build CQL2 Filter Factories
+
+## Items
+
+```python {all|5|7|8-10|11-16|all}
+@dataclasses.dataclass
+class ItemFilter:
+    """Tooling to filter STAC Items by tenant"""
+
+    async def __call__(self, context: dict[str, Any]) -> str:
+        """If tenant is present on request, filter Items by that tenant"""
+        tenant = context.get("tenant")
+        if tenant:
+            # fetch /{tenant}/collections for IDs
+            collection_ids = await get_permitted_collections(tenant)
+            return " AND ".join(
+                [
+                    f"collection = {collection_id}"
+                    for collection_id in collection_ids
+                ]
+            )
+        return "1=1"
+
+```
+
+
+---
+
+<div style="font-size: 1rem;">
+
+```ts {monaco-run} {autorun:true}
+/**
+ * Fetch Collection IDs for a given tenant
+ */
+async function fetchTenantCollections(tenant?: string) {
+  const url = 'https://test.openveda.cloud/api/stac' + (tenant ? `/${tenant}` : '') + '/collections?limit=5';
+  console.log(`Fetching ${url}...`)
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(`Total: ${data.numberMatched}`)
+  if (!data.collections.length) return console.log('No collections found :[')
+  for (const collection of data['collections']) {
+    console.log(` - ${collection.id}`);
+  }
+}
+
+await fetchTenantCollections();
+```
+
+</div>
+
 
 ---
 layout: image-right
@@ -705,8 +914,138 @@ image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
 class: image-narrow
 ---
 
-# record-level auth: filter factories
+# asset-level auth
 
+* **intention:** couple the business logic of viewing stac records with the business logic of accessing records
+* **use cases:**
+  * private assets
+
+---
+layout: image-right
+image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+class: image-narrow
+---
+
+# signed-urls via authentication extension
+
+````md magic-move
+
+```json {|8-21}
+{
+  "stac_version": "1.0.0",
+  "id": ...,
+  "type": "Feature",
+  "bbox": [ ... ],
+  "geometry": { ... },
+  "properties": { ... },
+  "assets": {
+    "visual": {
+      "href": "https://storage.googleapis.com/open-cogs/stac-examples/20201211_223832_CS2.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "3-Band Visual",
+      "roles": [ "visual" ]
+    },
+    "thumbnail": {
+      "href": "https://storage.googleapis.com/open-cogs/stac-examples/20201211_223832_CS2.jpg",
+      "title": "Thumbnail",
+      "type": "image/jpeg",
+      "roles": [ "thumbnail" ]
+    }
+  },
+  "links": [ ... ]
+}
+```
+
+```json {8-22|14}
+{
+  "stac_version": "1.0.0",
+  "id": ...,
+  "type": "Feature",
+  "bbox": [ ... ],
+  "geometry": { ... },
+  "properties": { ... },
+  "assets": {
+    "visual": {
+      "href": "https://storage.googleapis.com/open-cogs/stac-examples/20201211_223832_CS2.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "3-Band Visual",
+      "roles": [ "visual" ],
+      "auth:refs": [ "signed_url_auth" ]
+    },
+    "thumbnail": {
+      "href": "https://storage.googleapis.com/open-cogs/stac-examples/20201211_223832_CS2.jpg",
+      "title": "Thumbnail",
+      "type": "image/jpeg",
+      "roles": [ "thumbnail" ]
+    }
+  },
+  "links": [ ... ]
+}
+```
+
+```json {7-10|9}
+{
+  ...
+  "type": "Feature",
+  "assets": {
+    ...
+  },
+  "auth:schemes": {
+    "oauth": { ... },
+    "signed_url_auth": { ... }
+  },
+  "links": [ ... ]
+}
+```
+
+```json {|4-12}
+"signed_url_auth": {
+  "type": "signedUrl",
+  "description": "Requires an authentication API",
+  "flows": {
+    "authorizationApi": "https://our-stac-api/signed_url/authorize",
+    "method": "POST",
+    "parameters": {
+      ...
+    },
+    "auth:refs": ["oauth"],
+    "responseField": "signed_url"
+  }
+}
+```
+
+```json
+"parameters": {
+  "collection_id": {
+    "in": "body",
+    "required": true,
+    "description": "collection id",
+    "schema": {
+      "type": "string",
+      "examples": "landsat"
+    }
+  },
+  "item_id": {
+    "in": "body",
+    "required": true,
+    "description": "item id",
+    "schema": {
+      "type": "string",
+      "examples": "landsat"
+    }
+  },
+  "asset_key": {
+    "in": "body",
+    "required": true,
+    "description": "asset key",
+    "schema": {
+      "type": "string",
+      "examples": "analytic"
+    }
+  }
+},
+```
+````
 
 ---
 layout: image-right
@@ -716,8 +1055,19 @@ class: image-narrow
 
 # what's next?
 
-* record-level auth for transactions endpoints
 * asset-level access
+* record-level auth for transactions endpoints
+* performance upgrades
+
+---
+layout: image-right
+image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+class: image-narrow
+---
+
+# looking for feedback
+
+please let us know what you think!
 
 ---
 layout: title
