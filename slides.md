@@ -276,7 +276,7 @@ we aim for _sensible-defaults_
  -->
 ---
 layout: image-right
-image: /images/theme/lena-delta.jpg
+image: /images/theme/landsat9-kangerdlugssuaq-greenland.jpg
 class: image-narrow
 ---
 
@@ -289,7 +289,7 @@ class: image-narrow
 
 ---
 layout: image-right
-image: /images/theme/lena-delta.jpg
+image: /images/theme/landsat8-ord-river-australia.jpg
 class: image-narrow
 ---
 
@@ -360,7 +360,7 @@ PRIVATE_ENDPOINTS={
 
 ---
 layout: image-right
-image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+image: /images/theme/blue-white-red-abstract-painting.jpg
 class: image-narrow
 ---
 
@@ -476,7 +476,7 @@ a core principle of the STAC specification is its ability to describe itself.
 
 ---
 layout: image-right
-image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+image: /images/theme/lena-delta.jpg
 class: image-narrow
 ---
 
@@ -562,7 +562,7 @@ scale: 0.75
 
 ---
 layout: image-right
-image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+image: /images/theme/satellite-image-body-of-water.jpg
 class: image-narrow
 ---
 
@@ -579,7 +579,7 @@ class: image-narrow
 
 ---
 layout: image-right
-image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+image: /images/theme/landsat9-bangladesh-coast.jpg
 class: image-narrow
 ---
 
@@ -634,7 +634,7 @@ sequenceDiagram
 
 ---
 layout: image-right
-image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+image: /images/theme/landsat9-taklimakan-desert-china.jpg
 class: image-narrow
 ---
 
@@ -666,7 +666,7 @@ ITEMS_FILTER_ARGS=["baz"]
 
 ---
 layout: image-right
-image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+image: /images/theme/landsat9-western-guinea-bissau.jpg
 class: image-narrow
 ---
 
@@ -725,7 +725,7 @@ def example_filter():
 
 ---
 layout: cover
-background: '/images/theme/Tanezrouft_Basin.jpg'
+background: '/images/theme/blue-white-red-abstract-painting.jpg'
 class: px-5
 ---
 
@@ -798,7 +798,7 @@ GET /api/stac/collections?filter=dashboard:tenant = fire-tenant
 
 ---
 layout: cover
-background: '/images/theme/Tanezrouft_Basin.jpg'
+background: '/images/theme/satellite-image-body-of-water.jpg'
 class: px-5
 ---
 
@@ -826,7 +826,7 @@ class: px-5
 
 ---
 layout: cover
-background: '/images/theme/Tanezrouft_Basin.jpg'
+background: '/images/theme/lena-delta.jpg'
 class: px-5
 ---
 
@@ -883,6 +883,9 @@ class ItemFilter:
 
 
 ---
+layout: cover
+background: '/images/theme/landsat8-ayon-island.jpg'
+---
 
 <div style="font-size: 1rem;">
 
@@ -910,7 +913,7 @@ await fetchTenantCollections();
 
 ---
 layout: image-right
-image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+image: /images/theme/sentinel2a-southern-tibetan-plateau.jpg
 class: image-narrow
 ---
 
@@ -922,7 +925,7 @@ class: image-narrow
 
 ---
 layout: image-right
-image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+image: /images/theme/landsat9-kangerdlugssuaq-greenland.jpg
 class: image-narrow
 ---
 
@@ -1049,7 +1052,7 @@ class: image-narrow
 
 ---
 layout: image-right
-image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+image: /images/theme/landsat8-ord-river-australia.jpg
 class: image-narrow
 ---
 
@@ -1060,16 +1063,6 @@ class: image-narrow
 * performance upgrades
 
 ---
-layout: image-right
-image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
-class: image-narrow
----
-
-# looking for feedback
-
-please let us know what you think!
-
----
 layout: title
 # Landsat 9 image of Apostle Islands, Lake Superior
 # https://unsplash.com/photos/j7HqdQqn7Jo
@@ -1077,6 +1070,10 @@ image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
 ---
 
 # Thank you!
+
+We're looking for feedback, please let us know what you think!
+
+<br />
 
 ## Questions?
 
