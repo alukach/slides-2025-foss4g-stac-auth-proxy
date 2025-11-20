@@ -175,7 +175,7 @@ class: image-narrow
 
 1. target most common needs
 2. embrace for existing open standards
-3. mininize configuration overhead via sensible defaults
+3. minimize configuration overhead via sensible defaults
 4. usable as a standalone service or customizable with code
 
 ---
@@ -470,7 +470,7 @@ class: image-narrow
 [^1]: https://github.com/stac-extensions/authentication
 
 <!--
-a core principal of the STAC specification is its ability to describe itself.
+a core principle of the STAC specification is its ability to describe itself.
 
 -->
 
@@ -569,7 +569,7 @@ class: image-narrow
 # record-level auth
 
 
-* **intention:** only return authorizerd records (items/collections)
+* **intention:** only return authorized records (items/collections)
 * **use cases:**
   * hiding "draft" data
   * exposing data via subscription model
