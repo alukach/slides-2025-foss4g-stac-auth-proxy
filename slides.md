@@ -52,24 +52,6 @@ Auth Patterns and a Proxy-Based Approach
 <LogoHorPos position="top-left" height="24px" />
 
 ---
-layout: iframe-right
-url: https://developmentseed.org/team/anthony-lukach/
----
-
-# about me
-
-cloud engineer @ developmentseed
-
-<!--
-
-I'm a Cloud Engineer with DevelopmentSeed
-
-DevelopmentSeed is a consultancy focused on open data and open source software, with an affinity for geospatial data.
-
-Working as a consultancy allows us to work with a number of partners and see a lot of different projects, which is a great position to be in when we try to build solutions to solve many peoples needs
--->
-
----
 layout: image-right
 # Landsat 8 Image of Ayon Island
 # https://unsplash.com/photos/B-bXvd0R1bM
@@ -89,7 +71,11 @@ class: image-narrow
 </v-clicks>
 
 <!--
-1. Has obtained OGC
+I'm a Cloud Engineer with DevelopmentSeed
+
+DevelopmentSeed is a consultancy focused on open data and open source software, with an affinity for geospatial data.
+
+Working as a consultancy allows us to work with a number of partners and see a lot of different projects, which is a great position to be in when we try to build solutions to solve many peoples needs
 -->
 
 ---
@@ -141,87 +127,6 @@ we've identified three major groupings for auth needs
 -->
 
 ---
-layout: two-cols
-gap: 8
----
-
-# Two Column Layout
-
-<div mt-5 />
-
-Perfect for side-by-side content:
-
-- Technical details
-- Code examples
-- Comparisons
-- Process flows
-
-```python
-def process_data(input):
-    result = transform(input)
-    return result
-```
-
-::right::
-
-<div mt-5 />
-
-## Features
-
-**Configurable spacing:**
-- Use `gap` prop for column spacing
-- Default is `gap: 4`
-
-**Flexible ratios:**
-- `leftRatio: 50` = 50/50 split (default)
-- `leftRatio: 60` = 60/40 split
-- `leftRatio: 40` = 40/60 split
-
-**Perfect for:**
-- Before/after comparisons
-- Diagrams with explanations
-- Multi-step processes
-
-<LogoHorPos position="bottom-right" height="24px" />
-
-<DecorativeRectangle
-  width="30%"
-  height="20%"
-  zIndex=10
-  :position="{
-    top: '-5%',
-    left: '19%',
-  }"
-  :customStyle="{ mixBlendMode: 'multiply' }"
-/>
-
----
-layout: image-right
-image: https://images.unsplash.com/photo-1722083854982-2f1516cf263c
----
-
-# Table Styling
-
-<div mt-5 />
-
-Tables are styled with brand colors and clean borders:
-
-| Feature | openEO | TiTiler |
-| --- | --- | --- |
-| **Data Model** | Multi-dimensional arrays | Rasters |
-| **Processing** | Batch (async) | Dynamic (sync) |
-| **Infrastructure** | Heavy (dask) | Lightweight |
-| **API** | Graph-based | Function-based |
-
-**Features:**
-- Orange header text
-- Clean borders
-- Proper spacing
-- Alternating row colors
-
-<LogoHorNegMono position="bottom-right" />
-
----
 layout: iframe-right
 url: https://developmentseed.org/stac-auth-proxy/
 ---
@@ -268,8 +173,10 @@ class: image-narrow
 
 # strategy
 
-1. reach for existing open standards
-2. 
+1. target most common needs
+2. embrace for existing open standards
+3. mininize configuration overhead via sensible defaults
+4. usable as a standalone service or customizable with code
 
 ---
 layout: image-right
@@ -279,20 +186,32 @@ class: image-narrow
 
 # how does it work?
 
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant OIDC as OIDC Server<br/>(Keycloak/Cognito/Auth0)
+    participant Proxy as STAC Auth Proxy
+    participant STAC as STAC API
+
+    Client->>OIDC: Authenticate
+    OIDC->>Client: Access Token
+    Client->>Proxy: Request + Token
+    Proxy->>Proxy: Validate Token
+    Proxy->>Proxy: Augment Request<br/>(add user context)
+    Proxy->>STAC: Forward Augmented Request
+    STAC->>Proxy: Response
+    Proxy->>Proxy: Augment Response<br/>(add auth metadata)
+    Proxy->>Client: Modified Response
+```
+
+
+<!--
 * application gateway in front of your STAC API
 * integrates with OpenID Connect (OIDC) authentication servers (e.g. Keycloak, AWS Cognito, Auth0)
 * validates incoming requests
 * augments outgoing responses
-
----
-layout: image-right
-image: /images/theme/satellite-image-body-of-water.jpg
-class: image-narrow
----
-
-# sanity checks
-
-* on startup, the `stac-auth-proxy` will check your API
+-->
 
 ---
 layout: image-right
@@ -361,7 +280,20 @@ image: /images/theme/lena-delta.jpg
 class: image-narrow
 ---
 
-# route-level auth
+# route-level
+
+* **intention:** limit access to STAC endpoints
+* **use cases:**
+  * private STAC APIs
+  * guarded access to Transactions Extension
+
+---
+layout: image-right
+image: /images/theme/lena-delta.jpg
+class: image-narrow
+---
+
+# route-level auth configuration
 
 ````md magic-move
 ```dotenv {3}
@@ -432,68 +364,360 @@ image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
 class: image-narrow
 ---
 
-# integration w/ [authentication extension](https://github.com/stac-extensions/authentication)
+# reuse:  [authentication extension](https://github.com/stac-extensions/authentication)[^1]
 
-a core principal of the STAC specification is its ability to describe itself.
+
+`GET /`
 
 ````md magic-move
-```json [foo.js]
+```json
 {
   ...
-  "conformsTo": [
+  "links": [
     ...
   ],
   "stac_extensions": [
     ...
-  ],
+  ]
+}
+```
+
+```json{|9}
+{
+  ...
   "links": [
+    ...
+    {
+      "rel": "data",
+      "type": "application/json",
+      "title": "Collections available for this Catalog",
+      "href": "http://upstream-api/collections"
+    },
+  ]
+}
+```
+
+```json {|9-10}
+{
+  ...
+  "links": [
+    ...
+    {
+      "rel": "data",
+      "type": "application/json",
+      "title": "Collections available for this Catalog",
+      "href": "http://proxy-api/collections",
+      "auth:refs": ["oidc"]
+    },
+  ]
+}
+```
+
+```json
+{
+  ...
+  "links": [
+    ...
+    {
+      "rel": "data",
+      "type": "application/json",
+      "title": "Collections available for this Catalog",
+      "href": "http://proxy-api/collections",
+      "auth:refs": ["oidc"]
+    },
+  ],
+  "auth:schemes": {
+    "oidc": {
+      "type": "openIdConnect",
+      "openIdConnectUrl": "https://some-oidc-server/.well-known/openid-configuration"
+    }
+  }
+}
+```
+
+```json
+{
+  ...
+  "links": [
+    ...
+  ],
+  "auth:schemes": {
+    ...
+  },
+  "stac_extensions": [
     ...
   ]
 }
 ```
-```json [foo.js]
+
+```json
 {
   ...
+  "links": [
+    ...
+  ],
+  "auth:schemes": {
+    ...
+  },
   "stac_extensions": [
     ...
     "https://stac-extensions.github.io/authentication/v1.1.0/schema.json"
   ],
 }
 ```
+````
 
-```json
-{
-  ...
-  "links": [
-    ...
-    {
-      "rel": "data",
-      "type": "application/json",
-      "title": "Collections available for this Catalog",
-      "href": "http://localhost:8000/collections"
-    },
-  ]
-}
+[^1]: https://github.com/stac-extensions/authentication
+
+<!--
+a core principal of the STAC specification is its ability to describe itself.
+
+-->
+
+---
+layout: image-right
+image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+class: image-narrow
+---
+
+# reuse: [openapi spec](https://github.com/stac-extensions/authentication)
+
+````md magic-move
+```
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+DEFAULT_PUBLIC=true
+```
+
+```{4}
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+DEFAULT_PUBLIC=true
+OPENAPI_SPEC_ENDPOINT=/openapi.json
 ```
 
 ```json
 {
-  ...
-  "links": [
+  "openapi": "3.1.0",
+  "info": {...},
+  "paths": {
     ...
-    {
-      "rel": "data",
-      "type": "application/json",
-      "title": "Collections available for this Catalog",
-      "href": "http://localhost:8000/collections",
-      "auth:refs": [
-        "oidc"
-      ]
-    },
-  ]
+    "/collections": {
+      "post": {
+        "summary": "Create Collection",
+        "description": ...,
+        "operationId": ...,
+        "requestBody": ...,
+        "responses": ...,
+        "tags": [...]
+      }
+    }
+  },
+  "components": {
+    ...
+  },
+}
+```
+
+```json {14-16}
+{
+  "openapi": "3.1.0",
+  "info": {...},
+  "paths": {
+    ...
+    "/collections": {
+      "post": {
+        "summary": "Create Collection",
+        "description": ...,
+        "operationId": ...,
+        "requestBody": ...,
+        "responses": ...,
+        "tags": [...],
+        "security": [
+          { "oidcAuth": [ ] }
+        ]
+      }
+    }
+  },
+  "components": {
+    ...
+  },
 }
 ```
 ````
+
+---
+layout: iframe
+url: https://test.openveda.cloud/api/stac/docs
+scale: 0.75
+---
+
+# reuse: [openapi spec](https://github.com/stac-extensions/authentication) (cont.)
+
+
+![](./public/images/swagger%20-%20header.png)
+
+![](./public/images/swagger%20-%20endpoints.png)
+
+
+---
+layout: image-right
+image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+class: image-narrow
+---
+
+# record-level auth
+
+
+* **intention:** only return authorizerd records (items/collections)
+* **use cases:**
+  * hiding "draft" data
+  * exposing data via subscription model
+  * multitenancy
+
+
+
+---
+layout: image-right
+image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+class: image-narrow
+---
+
+# record-level auth strategy
+
+<v-switch>
+
+<template #0>
+
+1. generate CQL2 expressions based on request context
+2. apply CQL2 filters via filters extension[^1]
+
+</template>
+
+<template #1>
+
+```mermaid
+sequenceDiagram
+    Client->>Proxy: GET /collections
+    Proxy->>Proxy: check credentials
+    Proxy->>Proxy: create CQL2 filter
+    Proxy->>Proxy: apply CQL2 filter to request
+    Proxy->>STAC API: GET /collection?filter=(collection=landsat)
+    STAC API->>Client: Response
+```
+
+</template>
+
+<template #2>
+
+<div style="transform: scale(0.83); transform-origin: top left;">
+
+```mermaid
+sequenceDiagram
+    Client->>Proxy: GET /collections/abc123
+    Proxy->>Proxy: check credentials
+    Proxy->>Proxy: create CQL2 filter
+    Proxy->>STAC API: GET /collection/abc123
+    STAC API->>Proxy: Response
+    Proxy->>Proxy: validate response with CQL2 filter
+    Proxy->>Client: Response
+```
+
+</div>
+
+</template>
+
+</v-switch>
+
+[^1]: https://github.com/stac-api-extensions/filter
+
+
+---
+layout: image-right
+image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+class: image-narrow
+---
+
+# record-level auth configuration
+
+````md magic-move
+
+```dotenv
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+```
+
+```dotenv {|3|4}
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+COLLECTIONS_FILTER_CLS=my_package.filters:MyCollectionsFilter
+COLLECTIONS_FILTER_ARGS=["foo", "bar"]
+```
+
+```dotenv
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+COLLECTIONS_FILTER_CLS=my_package.filters:MyCollectionsFilter
+COLLECTIONS_FILTER_ARGS=["foo", "bar"]
+ITEMS_FILTER_CLS=my_package.filters:MyItemsFilter
+ITEMS_FILTER_ARGS=["baz"]
+```
+````
+
+---
+layout: image-right
+image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+class: image-narrow
+---
+
+# record-level auth configuration
+
+````md magic-move
+
+```dotenv
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+```
+
+```dotenv {|3|4}
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+COLLECTIONS_FILTER_CLS=my_package.filters:MyCollectionsFilter
+COLLECTIONS_FILTER_ARGS=["foo", "bar"]
+```
+
+```dotenv
+UPSTREAM_URL=http://stac:8001
+OIDC_DISCOVERY_URL=http://localhost:8888/.well-known/openid-configuration
+COLLECTIONS_FILTER_CLS=my_package.filters:MyCollectionsFilter
+COLLECTIONS_FILTER_ARGS=["foo", "bar"]
+ITEMS_FILTER_CLS=my_package.filters:MyItemsFilter
+ITEMS_FILTER_ARGS=["baz"]
+```
+````
+
+
+[^1]: https://github.com/stac-api-extensions/filter
+
+---
+layout: image-right
+image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+class: image-narrow
+---
+
+# record-level auth: filter factories
+
+
+---
+layout: image-right
+image: /images/theme/landsat9-apostle-islands-lake-superior.jpg
+class: image-narrow
+---
+
+# what's next?
+
+* record-level auth for transactions endpoints
+* asset-level access
 
 ---
 layout: title
