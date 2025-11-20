@@ -219,7 +219,7 @@ image: /images/theme/sentinel2a-southern-tibetan-plateau.jpg
 class: image-narrow
 ---
 
-# *caveat:* not necessarily a proxy
+# *note:* not necessarily a proxy
 
 Usable as a library of ASGI Middleware
 
